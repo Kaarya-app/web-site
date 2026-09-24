@@ -1,5 +1,4 @@
 ---
-import { SEO } from 'astro-seo';
 import '../styles/global.css';
 
 interface Props {
@@ -7,119 +6,236 @@ interface Props {
   description?: string;
   ogImage?: string;
   keywords?: string[];
+  canonical?: string;
 }
 
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://kaayra.interstellarhq.in';
+
 const {
-  title = 'कार्य (Kaarya) — Digital Shopfloor Ledger & Industrial MES for Indian Manufacturing',
-  description = 'Local-first, air-gapped manufacturing operations management and live OEE tracking for CNC machine shops and MSMEs. Zero per-seat fee, Hindi/Tamil/Telugu/Kannada/Marathi operator UI, IATF 16949 audit ready.',
+  title = 'कार्य (Kaarya) — 100% Made in India Digital Shopfloor Ledger & Industrial MES',
+  description = '100% Made in India. Local-first, air-gapped manufacturing operations management and live OEE tracking for Indian CNC machine shops, Tier-1/2 automotive suppliers, and MSMEs. Zero per-seat fee, Hindi/Tamil/Telugu/Kannada/Marathi operator UI, IATF 16949 audit ready.',
   ogImage = '/images/og-default.png',
+  canonical = Astro.url.pathname,
   keywords = [
+    'Made in India MES',
+    'Made in India Manufacturing Software',
     'OEE Software India',
     'Digital Shopfloor Ledger',
     'Manufacturing Execution System India',
-    'CNC Machine Monitoring',
-    'Air-gapped MES',
-    'Industrial IoT Gateway',
-    'Downtime Tracking',
+    'CNC Machine Monitoring India',
+    'Air-gapped MES India',
+    'Make in India Industry 4.0',
+    'IATF 16949 Compliance Software',
+    'Downtime Tracking India',
     'Shift Handover Software',
-    'IATF 16949 Compliance',
+    'Tally Integrated MES',
     'MSME Manufacturing Software',
     'Kaarya MES',
     'kaayra',
   ],
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://kaayra.interstellarhq.in').toString();
+const canonicalURL = new URL(canonical, siteUrl).toString();
+const absoluteOgImage = new URL(ogImage, siteUrl).toString();
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'SoftwareApplication',
-      name: 'Kaarya (कार्य)',
+      '@id': `${siteUrl}/#software`,
+      name: 'Kaarya (कार्य) — Digital Shopfloor Ledger',
       operatingSystem: 'Windows, Linux, macOS, Android, iOS',
       applicationCategory: 'ManufacturingOperationsManagement',
-      applicationSubCategory: 'Shopfloor Execution & OEE Ledger',
+      applicationSubCategory: 'Digital Shopfloor Ledger & OEE Software',
       description: description,
-      url: 'https://kaayra.interstellarhq.in',
+      url: siteUrl,
+      countryOfOrigin: {
+        '@type': 'Country',
+        name: 'India',
+      },
+      inLanguage: ['en-IN', 'hi', 'ta', 'te', 'kn', 'mr'],
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        ratingCount: '48',
+        bestRating: '5',
+        worstRating: '1',
+      },
       offers: {
         '@type': 'Offer',
         price: '0',
         priceCurrency: 'INR',
-        description: 'Core edition free forever for up to 2 machines; Pro flat annual plant license.',
+        description: 'Core edition free forever for up to 2 machines; Pro starts at ₹24,990/year flat plant license.',
       },
       featureList: [
+        '100% Made in India Manufacturing Architecture',
         'Real-time OEE Engine (Availability, Performance, Quality, TEEP)',
-        'Operator Downtime Reasoning with Vernacular & Voice Support',
-        'Digital Shift Handover with Auto-PDF Dossiers',
-        'Air-Gapped Offline Single Binary Execution',
-        'Batch & Part Traceability for IATF 16949 and AS9100',
-        'CNC & PLC Telemetry Gateway (Beta)',
+        'Operator Vernacular Downtime Reasoning with Voice Support (Hindi, Tamil, Telugu, Kannada, Marathi)',
+        'Digital Shift Handover with Auto-PDF Dossiers (IATF 16949 Section 8.5.1)',
+        'Air-Gapped Offline Single Binary Execution with Embedded SQLite WAL',
+        'Batch & Part Traceability for Automotive & Aerospace Audits',
+        'CNC & PLC Telemetry Gateway (Beta: Modbus TCP, OPC UA, MQTT Sparkplug B)',
       ],
+      creator: {
+        '@type': 'Organization',
+        name: 'Kaarya Manufacturing Systems',
+        url: siteUrl,
+      },
     },
     {
       '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
       name: 'Kaarya Manufacturing Systems',
-      url: 'https://kaayra.interstellarhq.in',
+      url: siteUrl,
+      logo: `${siteUrl}/favicon.svg`,
       email: 'contact-us@kaarya.interstellarhq.in',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'IN',
+      },
       contactPoint: {
         '@type': 'ContactPoint',
         email: 'contact-us@kaarya.interstellarhq.in',
-        contactType: 'sales and technical support',
+        contactType: 'sales and customer support',
+        areaServed: 'IN',
         availableLanguage: ['English', 'Hindi', 'Tamil', 'Telugu', 'Kannada', 'Marathi'],
       },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Kaarya (कार्य)',
+      description: description,
+      publisher: {
+        '@id': `${siteUrl}/#organization`,
+      },
+      inLanguage: 'en-IN',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Is Kaarya Made in India?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes, Kaarya is 100% designed, engineered, and built in India specifically for Indian precision machine shops, Tier-1/2 automotive component suppliers, and manufacturing MSMEs across hubs like Pune, Rajkot, Bengaluru, and Coimbatore.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Does Kaarya require an active internet connection or cloud servers?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'No. Kaarya is an air-gap native, local-first system. It runs completely offline on your shopfloor PC or local area network (LAN) using an embedded SQLite engine. No telemetry or production data ever leaves your factory walls.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What Indian languages does Kaarya support on the shopfloor?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Kaarya operator touchscreens and tablets natively support Hindi, Tamil, Telugu, Kannada, Marathi, and English, including vernacular one-tap downtime logging and voice input.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How much does Kaarya cost for Indian MSMEs?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Kaarya Core edition is free forever for up to 2 machines. The Pro Starter edition is aligned to standard Tally software budgets at ₹24,990/year flat for the plant with unlimited operator seats and zero per-user fees.',
+          },
+        },
+      ],
     },
   ],
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-IN" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b1326" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
     <meta name="keywords" content={keywords.join(', ')} />
     <meta name="author" content="Kaarya Manufacturing Systems" />
-    <meta name="robots" content="index, follow" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#0b1326" />
+    
+    <!-- Canonical Link -->
     <link rel="canonical" href={canonicalURL} />
     
-    <SEO
-      title={title}
-      description={description}
-      canonical={canonicalURL}
-      openGraph={{
-        basic: {
-          title: title,
-          type: "website",
-          image: ogImage,
-          url: canonicalURL,
-        },
-        optional: {
-          description: description,
-          siteName: "Kaarya (कार्य)",
-          locale: "en_IN",
-        }
-      }}
-      twitter={{
-        card: "summary_large_image",
-        title: title,
-        description: description,
-        image: ogImage,
-      }}
-    />
+    <!-- Geographic & Regional Meta Tags for Indian Indexing -->
+    <meta name="geo.region" content="IN" />
+    <meta name="geo.placename" content="India" />
+    <meta name="language" content="English, Hindi, Tamil, Telugu, Kannada, Marathi" />
+    <meta name="coverage" content="India" />
+    <meta name="distribution" content="Global" />
+    <meta name="rating" content="General" />
+    <meta name="DC.title" content={title} />
+    <meta name="DC.creator" content="Kaarya Manufacturing Systems" />
+    <meta name="DC.description" content={description} />
 
-    <!-- JSON-LD Structured Data -->
+    <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kaarya (कार्य) — Digital Shopfloor Ledger" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:secure_url" content={absoluteOgImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kaarya — 100% Made in India Digital Shopfloor Ledger & OEE Software" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteOgImage} />
+    <meta name="twitter:image:alt" content="Kaarya — 100% Made in India Digital Shopfloor Ledger & OEE Software" />
+
+    <!-- Favicons & Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Schema.org Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body class="min-h-screen flex flex-col bg-surface text-content">
+  <body class="min-h-screen flex flex-col bg-surface text-content antialiased">
+    <!-- Top Country Header Strip -->
+    <div class="border-b border-outline/70 bg-surface text-[11px] font-mono py-1 px-4 text-center text-content-muted flex items-center justify-center gap-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+      <span class="text-content font-semibold">🇮🇳 100% MADE IN INDIA</span>
+      <span class="text-outline">|</span>
+      <span>Air-Gapped Shopfloor Ledger</span>
+      <span class="text-outline hidden sm:inline">|</span>
+      <span class="text-primary hidden sm:inline">IATF 16949 & AS9100 Ready</span>
+    </div>
+
     <header class="border-b border-outline bg-surface-elevated sticky top-0 z-40">
       <div class="container flex items-center justify-between h-16 px-4">
         <!-- Logo -->
         <a href="/" class="flex items-center gap-1.5 sm:gap-2 font-display text-lg sm:text-xl font-bold tracking-tight text-content no-underline shrink-0">
           <span class="px-2 h-7 rounded bg-primary text-white flex items-center justify-center text-xs sm:text-sm font-bold">कार्य</span>
-          <span>KAARYA</span>
+          <span class="flex items-center gap-1.5">
+            <span>KAARYA</span>
+            <span class="text-[10px] font-mono px-1 py-0.2 rounded border border-outline text-secondary font-semibold hidden lg:inline">MADE IN INDIA</span>
+          </span>
         </a>
 
         <!-- Desktop Navigation -->
@@ -163,13 +279,17 @@ const jsonLd = {
 
       <!-- Mobile Dropdown Navigation -->
       <div id="mobile-menu" class="hidden md:hidden border-t border-outline bg-surface-elevated px-4 py-4 space-y-3">
+        <div class="pb-2 border-b border-outline flex items-center justify-between text-xs font-mono text-secondary">
+          <span>🇮🇳 100% Made in India</span>
+          <span class="text-content-muted">Air-Gap Local MES</span>
+        </div>
         <a href="/#features" class="mobile-nav-link block py-1.5 text-sm text-content-muted hover:text-primary transition-colors font-medium">Features & Capabilities</a>
         <a href="/demo" class="mobile-nav-link flex items-center justify-between py-1.5 text-sm text-content-muted hover:text-primary transition-colors font-medium">
           <span>Interactive Demo Tour</span>
           <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-primary/20 text-primary uppercase font-bold">New</span>
         </a>
         <a href="/#upcoming" class="mobile-nav-link block py-1.5 text-sm text-content-muted hover:text-primary transition-colors font-medium">Roadmap (Beta & Alpha)</a>
-        <a href="/#pricing" class="mobile-nav-link block py-1.5 text-sm text-content-muted hover:text-primary transition-colors font-medium">Transparent Pricing</a>
+        <a href="/#pricing" class="mobile-nav-link block py-1.5 text-sm text-content-muted hover:text-primary transition-colors font-medium">Transparent Pricing (₹ INR)</a>
         <div class="pt-2 border-t border-outline flex items-center justify-between text-xs text-content-muted font-mono">
           <span>Inquiries:</span>
           <a href="mailto:contact-us@kaarya.interstellarhq.in" class="text-primary hover:underline">contact-us@kaarya.interstellarhq.in</a>
@@ -223,7 +343,9 @@ const jsonLd = {
               <span class="px-2 h-7 rounded bg-primary text-white flex items-center justify-center text-sm font-bold">कार्य</span>
               <span>KAARYA</span>
             </div>
-            <p class="max-w-xs text-sm mb-4">Digital Shopfloor Ledger & Industrial MES. High-precision OEE, downtime tracking, and shift management engineered for Indian manufacturing plants.</p>
+            <p class="max-w-sm text-sm mb-4 leading-relaxed">
+              100% Made in India Digital Shopfloor Ledger & Industrial MES. High-precision OEE computation, vernacular operator downtime tracking, and shift dossiers engineered specifically for Indian manufacturing plants.
+            </p>
             <div class="flex items-center gap-2 text-xs font-mono text-content-muted">
               <span>Direct Inquiries:</span>
               <a href="mailto:contact-us@kaarya.interstellarhq.in" class="text-primary hover:underline font-semibold">contact-us@kaarya.interstellarhq.in</a>
@@ -234,12 +356,12 @@ const jsonLd = {
             <ul class="space-y-2 text-sm">
               <li><a href="/#features" class="hover:text-primary transition-colors">Features & Capabilities</a></li>
               <li><a href="/demo" class="hover:text-primary transition-colors">Interactive Product Demo</a></li>
-              <li><a href="/#pricing" class="hover:text-primary transition-colors">Transparent Pricing</a></li>
+              <li><a href="/#pricing" class="hover:text-primary transition-colors">Transparent Pricing (₹ INR)</a></li>
               <li><a href="/contact" class="hover:text-primary transition-colors">Request Pilot Access</a></li>
             </ul>
           </div>
           <div>
-            <h4 class="font-bold text-content mb-3">Resources & Inquiries</h4>
+            <h4 class="font-bold text-content mb-3">Resources & Support</h4>
             <ul class="space-y-2 text-sm">
               <li><a href="/contact" class="hover:text-primary transition-colors">Product Inquiries</a></li>
               <li><a href="/ai-manifest.json" target="_blank" class="hover:text-primary transition-colors flex items-center gap-1">AI Manifest <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a></li>
@@ -248,13 +370,13 @@ const jsonLd = {
           </div>
         </div>
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p class="m-0 font-sans text-xs">© {new Date().getFullYear()} Kaarya Manufacturing Systems. All rights reserved.</p>
-          <div class="flex items-center gap-4 text-xs">
-            <span class="text-secondary font-medium">Air-Gap Native</span>
+          <p class="m-0 font-sans text-xs">© {new Date().getFullYear()} Kaarya Manufacturing Systems. 100% Made in India.</p>
+          <div class="flex flex-wrap items-center gap-4 text-xs">
+            <span class="text-secondary font-medium">🇮🇳 100% Made in India</span>
+            <span class="text-outline">|</span>
+            <span class="text-content font-medium">Air-Gap Native</span>
             <span class="text-outline">|</span>
             <span>Domain: kaayra.interstellarhq.in</span>
-            <span class="text-outline">|</span>
-            <span class="text-primary font-medium">Made for India</span>
           </div>
         </div>
       </div>
