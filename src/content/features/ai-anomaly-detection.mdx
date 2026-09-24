@@ -1,0 +1,51 @@
+---
+id: "ai-anomaly-detection"
+title: "AI Anomaly & Downtime Root-Cause Detection"
+tagline: "Statistical and ML-based pattern recognition on live machine telemetry — edge only"
+category: "analytics"
+status: "beta"
+version: "0.8.0-beta"
+tier: "pro"
+specs:
+  model_type: "Edge Isolation Forest & Dynamic Baseline Regression"
+  inference_latency_ms: 15
+  air_gap: true
+  min_training_hours: 48
+  detect_types: ["Micro-stops (< 1 min)", "Sensor Drift", "Spindle Wear", "Thermal Anomaly", "Vibration Signature"]
+included_in: ["pro", "enterprise"]
+pro_gated: ["anomaly-alerts", "predictive-maintenance", "custom-model-training"]
+icon: "brain-circuit"
+hero_image: "/images/features/ai-anomaly-hero.png"
+screenshots:
+  - "/images/features/ai-anomaly-dashboard.png"
+description: "Currently in Beta Mode with pilot manufacturing plants across Pune, Coimbatore, Bengaluru. Detects subtle machine micro-stops, sensor drift, and early spindle wear directly at the edge — no cloud inference, no internet required. Runs on the same binary. 48 hours of training data → live anomaly detection."
+keywords: ["AI", "Anomaly Detection", "Machine Learning", "Predictive Maintenance", "Root Cause Analysis", "Edge AI", "Micro-stops", "Sensor Drift", "Spindle Wear"]
+related_features: ["oee-engine", "iot-gateway", "andon-dashboard", "downtime-reasoning"]
+---
+
+## Beta Pilot Status
+This capability is actively deployed across select pilot customer shopfloors. It runs localized lightweight models directly on the edge node without requiring internet access or offsite cloud inference.
+
+### What It Detects (Edge Models)
+| Anomaly Type | Detection Method | Typical Lead Time |
+|--------------|------------------|-------------------|
+| **Micro-stops** (< 60 sec) | Isolation Forest on cycle time residuals | Real-time |
+| **Sensor Drift** | Dynamic baseline regression on analog tags | Hours–Days |
+| **Spindle Wear** | Vibration spectral analysis (if sensor available) | Days–Weeks |
+| **Thermal Anomaly** | Multivariate correlation (temp + current + speed) | Hours |
+| **Cycle Time Creep** | CUSUM control chart on part cycle times | Shifts |
+
+### How It Works
+1. **48-hour baseline**: Kaarya collects normal operation data (auto-starts on first run)
+2. **Model training**: Lightweight Isolation Forest + regression models train on-edge (CPU only, < 2GB RAM)
+3. **Live inference**: Every telemetry sample (500ms) scored in < 15ms
+4. **Alerting**: Anomaly score > threshold → Andon Amber + Mobile push + optional email/Slack
+5. **Root-cause assist**: Top contributing tags ranked (e.g., "Spindle Load +8%, Vibration X +12%")
+
+### Air-Gap Native
+Models train and infer 100% on the edge node. No model weights leave your VLAN. No cloud GPU needed. Runs on the same industrial PC as Kaarya Core.
+
+### Pro/Enterprise Roadmap
+- **Custom model training** (Enterprise): Bring your own labeled failure data → Kaarya trains custom model
+- **Predictive maintenance scheduling**: Integrate with CMMS for work order auto-generation
+- **Cross-fleet benchmarking** (Enterprise): Anonymized model improvement across your plants

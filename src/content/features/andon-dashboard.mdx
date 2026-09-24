@@ -1,0 +1,49 @@
+---
+id: "andon-dashboard"
+title: "Real-Time Andon Dashboard"
+tagline: "Shopfloor TV + Mobile + Browser — Red/Amber/Green at machine speed"
+category: "operations"
+status: "shipped"
+version: "1.0.0"
+tier: "core"
+specs:
+  update_rate_ms: 500
+  display_modes: ["TV Wallboard", "Mobile App", "Browser", "Tablet Kiosk"]
+  air_gap: true
+  languages: ["English", "Hindi", "Tamil", "Telugu", "Kannada", "Marathi", "Gujarati", "Bengali"]
+  alert_channels: ["Visual", "Audio", "Mobile Push", "Email", "Slack", "Webhook"]
+included_in: ["core", "pro", "enterprise"]
+pro_gated: ["supervisor-escalation", "custom-alert-rules", "historical-replay"]
+icon: "tv"
+hero_image: "/images/features/andon-hero.png"
+screenshots:
+  - "/images/features/andon-tv.png"
+  - "/images/features/andon-mobile.png"
+description: "Real-time Andon at machine speed. Sub-500ms from PLC signal to TV/mobile. 8 languages. Audio + visual alerts. Runs on any browser — Raspberry Pi, Android TV, industrial panel PC. Pro adds supervisor escalation workflows and custom alert rules."
+keywords: ["Andon", "Real-time Dashboard", "Shopfloor TV", "Visual Management", "Lean Manufacturing", "Alerting", "Multilingual"]
+related_features: ["oee-engine", "iot-gateway", "mobile-app", "downtime-reasoning"]
+---
+
+## Andon at Machine Speed
+Traditional Andon: PLC → SCADA → Historian → Dashboard → TV. Latency: seconds to minutes. Kaanya: PLC → Kaarya (binary) → WebSocket → TV/Browser/Mobile. Latency: &lt;500ms.
+
+### Display Modes (All Tiers)
+- **Shopfloor TV**: Full-screen wallboard — machine grid, Red/Amber/Green, OEE %, current part, downtime reason
+- **Mobile App**: Pocket Andon — push alerts, one-tap acknowledgment, supervisor dispatch
+- **Browser/Kiosk**: Any device with Chrome/Firefox — Raspberry Pi 4, Android TV box, industrial panel PC
+- **Tablet Kiosk**: Mounted at each cell — operator sees only their machines
+
+### Visual Language
+- 🔴 **Red**: Unplanned stop (breakdown, no material, quality hold) — Andon audio alert
+- 🟡 **Amber**: Planned stop (setup, tool change, maintenance) — configurable threshold
+- 🟢 **Green**: Running at or above target rate
+- ⚪ **Gray**: No data / offline / shift not started
+
+### Multilingual
+Machine names, downtime reasons, part names — all displayed in operator's selected language (8 languages). Supervisor sees English.
+
+### Pro/Enterprise Adds
+- **Supervisor Escalation**: Auto-route Red alerts to maintenance/quality/tooling with SLA countdown
+- **Custom Alert Rules**: "Alert if Machine 7 stops > 3 min" / "Alert if OEE < 60% for 30 min"
+- **Historical Replay**: Scrub through shift timeline — see exact stop/start sequence
+- **Audio Customization**: Upload custom .wav for each alert type

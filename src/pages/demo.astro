@@ -1,0 +1,280 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const seoTitle = "Interactive Product Demo & Shopfloor Tour — Kaarya";
+const seoDescription = "Explore the Kaarya Digital Shopfloor Ledger. Interactive preview of the real-time Andon board, live OEE calculation, vernacular operator downtime tracking, and shift dossiers.";
+---
+
+<BaseLayout title={seoTitle} description={seoDescription} keywords={[
+  'Kaarya Demo',
+  'Shopfloor OEE Demo',
+  'Andon Board Preview',
+  'MES Software Walkthrough',
+  'CNC Monitoring Demo'
+]}>
+  <section class="section border-b border-outline bg-surface-elevated">
+    <div class="container max-w-5xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-sm bg-surface border border-outline font-mono text-xs text-secondary font-semibold">
+        <span class="w-2 h-2 rounded bg-secondary animate-pulse"></span>
+        <span>INTERACTIVE PRODUCT WALKTHROUGH</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-content mb-4">
+        See Kaarya on the Factory Floor
+      </h1>
+      <p class="text-base sm:text-lg text-content-muted max-w-2xl leading-relaxed">
+        Engineered specifically for machine shops, CNC job shops, and automotive tier-suppliers. Explore core modules below or book a live remote session on your parts.
+      </p>
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        <a href="/contact" class="btn-primary text-sm px-5 py-2.5">
+          Schedule 30-min Live Walkthrough
+        </a>
+        <a href="#interactive-demo" class="btn-secondary text-sm px-5 py-2.5">
+          Explore Simulated Screens
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Demo Modules -->
+  <section id="interactive-demo" class="section">
+    <div class="container max-w-5xl mx-auto space-y-16">
+      
+      <!-- Module 1: Live Andon Board & OEE -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5 space-y-4">
+          <div class="font-mono text-xs text-primary font-bold uppercase tracking-wider">Module 01 • Production Telemetry</div>
+          <h2 class="text-2xl sm:text-3xl font-bold font-display text-content">Live Andon & Shopfloor Cockpit</h2>
+          <p class="text-sm text-content-muted leading-relaxed">
+            Real-time status broadcast for wall-mounted TV monitors and tablets. Operators and plant heads see actual running cycles, scrap rates, and part bottlenecks with sub-500ms latency.
+          </p>
+          <div class="p-3 rounded bg-surface border border-outline text-xs space-y-1.5 font-mono">
+            <div class="text-secondary flex items-center gap-2">✓ <strong>Stable Feature:</strong> Manual & simulated cycle counters</div>
+            <div class="text-primary flex items-center gap-2">⚡ <strong>Beta Feature:</strong> Direct CNC/PLC Modbus & OPC UA telemetry</div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="rounded-lg border border-outline bg-surface overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-4 py-2.5 border-b border-outline bg-surface-elevated">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+                <span class="font-mono text-xs text-content font-bold">SHOPFLOOR ANDON — BAY 1 (4 MACHINES)</span>
+              </div>
+              <span class="font-mono text-[11px] text-content-muted">SHIFT 1 • 11:42 IST</span>
+            </div>
+            
+            <div class="p-4 grid grid-cols-2 gap-3 bg-surface">
+              <!-- Machine 1 -->
+              <div class="p-3 rounded border border-secondary/40 bg-surface-elevated">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="font-mono font-bold text-sm text-content">CNC-01 (VMC-850)</span>
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-secondary/20 text-secondary">RUNNING</span>
+                </div>
+                <div class="text-xs text-content-muted mb-1">Part: Flange Collar 42mm</div>
+                <div class="flex justify-between items-end">
+                  <div class="font-mono text-xs">OEE: <span class="text-secondary font-bold text-base">89.2%</span></div>
+                  <div class="font-mono text-xs text-content-muted">Count: 148 / 180</div>
+                </div>
+              </div>
+
+              <!-- Machine 2 -->
+              <div class="p-3 rounded border border-secondary/40 bg-surface-elevated">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="font-mono font-bold text-sm text-content">CNC-02 (Lathe-200)</span>
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-secondary/20 text-secondary">RUNNING</span>
+                </div>
+                <div class="text-xs text-content-muted mb-1">Part: Drive Shaft Spline</div>
+                <div class="flex justify-between items-end">
+                  <div class="font-mono text-xs">OEE: <span class="text-secondary font-bold text-base">84.5%</span></div>
+                  <div class="font-mono text-xs text-content-muted">Count: 92 / 110</div>
+                </div>
+              </div>
+
+              <!-- Machine 3: Downtime -->
+              <div class="p-3 rounded border border-warning/40 bg-surface-elevated">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="font-mono font-bold text-sm text-content">CNC-03 (HMC-630)</span>
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-warning/20 text-warning">DOWNTIME</span>
+                </div>
+                <div class="text-xs text-warning mb-1">Tool Insert Wear (14m)</div>
+                <div class="flex justify-between items-end">
+                  <div class="font-mono text-xs">OEE: <span class="text-warning font-bold text-base">68.1%</span></div>
+                  <div class="font-mono text-xs text-content-muted">Worker: Rajesh K.</div>
+                </div>
+              </div>
+
+              <!-- Machine 4: Idle -->
+              <div class="p-3 rounded border border-outline bg-surface-elevated">
+                <div class="flex justify-between items-start mb-2">
+                  <span class="font-mono font-bold text-sm text-content">CNC-04 (VTL-500)</span>
+                  <span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-surface border border-outline text-content-muted">IDLE</span>
+                </div>
+                <div class="text-xs text-content-muted mb-1">Awaiting Raw Material</div>
+                <div class="flex justify-between items-end">
+                  <div class="font-mono text-xs">OEE: <span class="text-content-muted font-bold text-base">71.0%</span></div>
+                  <div class="font-mono text-xs text-content-muted">Batch Pending</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Aggregate Strip -->
+            <div class="px-4 py-2 border-t border-outline bg-surface-elevated flex items-center justify-between text-xs font-mono">
+              <span class="text-content-muted">PLANT OEE: <strong class="text-secondary text-sm">82.3%</strong></span>
+              <span class="text-content-muted">AVAILABILITY: <strong class="text-content">88%</strong></span>
+              <span class="text-content-muted">PERF: <strong class="text-content">95%</strong></span>
+              <span class="text-content-muted">QUAL: <strong class="text-content">98.5%</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 2: Operator Downtime Reasoning -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5 lg:order-2 space-y-4">
+          <div class="font-mono text-xs text-secondary font-bold uppercase tracking-wider">Module 02 • Operator Execution</div>
+          <h2 class="text-2xl sm:text-3xl font-bold font-display text-content">Vernacular Downtime Logging</h2>
+          <p class="text-sm text-content-muted leading-relaxed">
+            Operators hate typing English codes on greasy touchscreens. Kaarya provides one-tap downtime logging with pre-coded reasons in Hindi, Tamil, Telugu, Kannada, Marathi, or voice notes.
+          </p>
+          <ul class="text-xs space-y-2 text-content-muted font-sans">
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold font-mono">✓</span> 35 standard loss reasons aligned with IATF 16949 categories</li>
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold font-mono">✓</span> Mandatory explanation gate before machine status can reset</li>
+            <li class="flex items-center gap-2"><span class="text-secondary font-bold font-mono">✓</span> Real-time MTTR and MTBF calculation per operator & machine</li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-7 lg:order-1">
+          <div class="rounded-lg border border-outline bg-surface overflow-hidden shadow-2xl">
+            <div class="px-4 py-3 border-b border-outline bg-surface-elevated flex items-center justify-between">
+              <span class="font-mono text-xs text-content font-bold">OPERATOR TABLET — DOWNTIME EVENT RECORDING</span>
+              <div class="flex gap-1 text-[11px] font-mono">
+                <span class="px-1.5 py-0.5 rounded bg-surface border border-outline text-primary font-bold">EN</span>
+                <span class="px-1.5 py-0.5 rounded bg-surface border border-outline text-content-muted">हिन्दी</span>
+                <span class="px-1.5 py-0.5 rounded bg-surface border border-outline text-content-muted">தமிழ்</span>
+              </div>
+            </div>
+
+            <div class="p-5 space-y-4 bg-surface">
+              <div class="p-3 rounded bg-warning/10 border border-warning/30 flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-mono text-warning uppercase font-bold">Machine Stopped: CNC-03</div>
+                  <div class="text-sm text-content font-semibold">Duration: 14 mins 22 secs</div>
+                </div>
+                <span class="px-2 py-1 rounded bg-warning text-black font-mono text-xs font-bold animate-pulse">ACTION NEEDED</span>
+              </div>
+
+              <div class="space-y-1.5">
+                <div class="text-xs font-semibold text-content-muted uppercase font-mono">Select Downtime Category</div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-medium">
+                  <div class="p-2.5 rounded border border-primary bg-primary/10 text-primary cursor-pointer text-center font-semibold">
+                    Tool Change / Insert (टूल चेंज)
+                  </div>
+                  <div class="p-2.5 rounded border border-outline bg-surface-elevated text-content-muted hover:border-content text-center">
+                    Power Trip / Stabilizer
+                  </div>
+                  <div class="p-2.5 rounded border border-outline bg-surface-elevated text-content-muted hover:border-content text-center">
+                    Coolant / Chip Flush
+                  </div>
+                  <div class="p-2.5 rounded border border-outline bg-surface-elevated text-content-muted hover:border-content text-center">
+                    First-Piece Inspection
+                  </div>
+                  <div class="p-2.5 rounded border border-outline bg-surface-elevated text-content-muted hover:border-content text-center">
+                    No Raw Material
+                  </div>
+                  <div class="p-2.5 rounded border border-outline bg-surface-elevated text-content-muted hover:border-content text-center">
+                    Setup & Fixture Align
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-2 flex justify-between items-center text-xs text-content-muted border-t border-outline">
+                <span class="font-mono">Logged by: Operator #402 (Rajesh K.)</span>
+                <span class="btn-primary text-xs px-3 py-1 cursor-pointer">Confirm & Resume Run</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 3: Shift Handover & Compliance Dossiers -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-5 space-y-4">
+          <div class="font-mono text-xs text-content-muted font-bold uppercase tracking-wider">Module 03 • Digital Governance</div>
+          <h2 class="text-2xl sm:text-3xl font-bold font-display text-content">Signed Shift Dossiers & IATF 16949 Audits</h2>
+          <p class="text-sm text-content-muted leading-relaxed">
+            Eliminate WhatsApp shift logs and paper clipboard disputes. Every shift ends with a tamper-evident digital signoff that produces an official PDF dossier ready for customer audits.
+          </p>
+          <div class="space-y-2 text-xs text-content-muted">
+            <div class="p-2.5 rounded bg-surface border border-outline flex items-center justify-between">
+              <span>Shift A vs B OEE Variance</span>
+              <strong class="font-mono text-secondary">Auto-Reconciled</strong>
+            </div>
+            <div class="p-2.5 rounded bg-surface border border-outline flex items-center justify-between">
+              <span>Scrap Defect Breakdown (80/20 Pareto)</span>
+              <strong class="font-mono text-primary">Generated in 1 Click</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="card border-outline bg-surface-elevated p-6 space-y-4">
+            <div class="flex items-center justify-between border-b border-outline pb-3">
+              <div>
+                <div class="font-mono text-xs text-content-muted">OFFICIAL SHIFT DOSSIER • GENERATED REPORT</div>
+                <div class="font-bold text-base text-content">Morning Shift 01 (06:00 - 14:00) — Batch #WO-9921</div>
+              </div>
+              <span class="px-2 py-0.5 rounded font-mono text-[11px] bg-secondary/20 text-secondary font-bold">AUDIT READY</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div class="p-3 rounded bg-surface border border-outline">
+                <div class="text-[11px] text-content-muted font-mono mb-1">TOTAL OUTPUT</div>
+                <div class="text-xl font-mono font-bold text-content">482 pcs</div>
+              </div>
+              <div class="p-3 rounded bg-surface border border-outline">
+                <div class="text-[11px] text-content-muted font-mono mb-1">SCRAP / DEFECT</div>
+                <div class="text-xl font-mono font-bold text-error">6 pcs (1.2%)</div>
+              </div>
+              <div class="p-3 rounded bg-surface border border-outline">
+                <div class="text-[11px] text-content-muted font-mono mb-1">SHIFT OEE</div>
+                <div class="text-xl font-mono font-bold text-secondary">86.4%</div>
+              </div>
+            </div>
+
+            <div class="p-3 rounded bg-surface border border-outline font-mono text-xs text-content-muted leading-relaxed">
+              <div class="text-content font-bold mb-1">SUPERVISOR SIGN-OFF RECORD:</div>
+              <div>Supervisor: Vinay Deshmukh (Emp #104) • Signed at 14:02 IST</div>
+              <div>Digital Fingerprint: <span class="text-primary font-bold">sha256:4a9c8b...f2e0</span> (WAL local sync)</div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <span class="text-xs text-content-muted">Format: Standard GST & IATF 16949 Section 8.5.1 Dossier</span>
+              <a href="/contact" class="btn-secondary text-xs px-3 py-1.5">Request Sample PDF</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Box -->
+  <section class="section border-t border-outline bg-surface-elevated text-center">
+    <div class="container max-w-3xl mx-auto space-y-6">
+      <h2 class="text-3xl font-bold font-display text-content">
+        Want to See This Running on Your Shopfloor?
+      </h2>
+      <p class="text-content-muted text-sm sm:text-base leading-relaxed">
+        We conduct 30-minute remote or on-site walkthroughs. We test your machine tags, setup simulated cycle times, and demonstrate how Kaarya eliminates clipboard guesswork in 4 hours flat.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact" class="btn-primary text-sm px-6 py-3 font-semibold">
+          Request Live Walkthrough & Pilot
+        </a>
+        <a href="mailto:contact-us@kaarya.interstellarhq.in" class="btn-secondary text-sm px-6 py-3 font-semibold">
+          Email: contact-us@kaarya.interstellarhq.in
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

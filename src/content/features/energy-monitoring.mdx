@@ -1,0 +1,61 @@
+---
+id: "energy-monitoring"
+title: "Machine-Level Energy Monitoring"
+tagline: "kWh per part, per machine, per shift — find the 10-15% power waste"
+category: "analytics"
+status: "beta"
+version: "0.7.0-beta"
+tier: "pro"
+specs:
+  protocols: ["Modbus RTU/TCP", "MQTT", "Pulse Input", "OPC UA"]
+  meters_supported: ["Schneider PM5000", "Siemens PAC3200", "Janitza UMG", "Generic Modbus"]
+  sampling_sec: 10
+  air_gap: true
+  cost_calculation: "Per-part / Per-shift / Per-day / Per-month"
+included_in: ["pro", "enterprise"]
+pro_gated: ["demand-charge-optimization", "renewable-integration", "carbon-reporting"]
+icon: "zap"
+hero_image: "/images/features/energy-hero.png"
+screenshots:
+  - "/images/features/energy-dashboard.png"
+  - "/images/features/energy-per-part.png"
+description: "Machine-level energy monitoring integrated with OEE. kWh per part, per machine, per shift. Identifies idle consumption, startup spikes, compressed air leaks. 10-15% energy waste typical. Pro tier. Air-gap native. Modbus/MQTT/pulse input."
+keywords: ["Energy Monitoring", "Power Monitoring", "kWh per Part", "Energy Efficiency", "Demand Charge", "Carbon Footprint", "Sustainability", "ISO 50001", "Modbus", "MQTT"]
+related_features: ["iot-gateway", "oee-engine", "ai-anomaly-detection", "compliance-reports"]
+---
+
+## Energy at Machine Resolution
+Factory power bill: one number. Kaarya: kWh per part, per machine, per shift. Typical finding: 10-15% waste in idle, startup, compressed air.
+
+### What You See
+| Metric | Granularity | Use Case |
+|--------|-------------|----------|
+| **kWh / Part** | Per part / Per machine | Costing accuracy, quoting |
+| **kWh / Shift** | Per machine / Per cell | Shift comparison, scheduling |
+| **Idle Power** | Per machine | Night/weekend waste, compressed air leaks |
+| **Startup Spike** | Per cycle | Sequencing optimization |
+| **Power Factor** | Per machine / Feeder | Penalty avoidance |
+| **Demand (kW)** | 15-min intervals | Demand charge management |
+
+### Supported Meters (Modbus/MQTT/Pulse)
+- Schneider Electric PM5000 / PM8000 series
+- Siemens PAC3200 / PAC4200
+- Janitza UMG 96 / 512
+- Any Modbus RTU/TCP energy meter
+- Pulse output meters (via digital input module)
+
+### Integration with OEE
+Energy + OEE = True cost per part.
+```
+Cost/Part = (Material + Labor + Tooling + Energy + Overhead) / Good Parts
+```
+Kaarya computes this live. Energy anomalies → Andon alerts (idle machine drawing power, power factor drop).
+
+### Air-Gap Native
+Meters on Modbus RTU (RS-485) or isolated Modbus TCP VLAN. No cloud. Data stays in your historian.
+
+### Pro/Enterprise Roadmap
+- **Demand Charge Optimization**: Auto-sequence heavy loads to flatten peaks
+- **Renewable Integration**: Solar/wind generation vs consumption balancing
+- **Carbon Reporting**: Scope 1 & 2 per part, per order, per customer
+- **ISO 50001**: Energy baseline, EnPI tracking, improvement projects

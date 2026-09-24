@@ -1,0 +1,40 @@
+---
+id: "sqlite-edge-engine"
+title: "Embedded SQLite Edge Database Engine"
+tagline: "Zero-daemon, single-binary embedded storage with WAL concurrency and hot online backups"
+category: "platform"
+status: "shipped"
+version: "1.0.0"
+adr: "ADR-0010"
+tier: "core"
+specs:
+  engine: "SQLite 3 with WAL Mode (Write-Ahead Logging)"
+  memory_cache_mb: 64
+  mmap_io_mb: 256
+  busy_timeout_ms: 5000
+  backup_mode: "Zero-downtime hot backup (VACUUM INTO)"
+  cloud_migration: "Seamless PostgreSQL switch via GORM"
+included_in: ["core", "pro", "enterprise"]
+pro_gated: []
+icon: "database"
+hero_image: "/images/features/sqlite-hero.png"
+screenshots:
+  - "/images/features/sqlite-backup.png"
+description: "Zero-configuration embedded database engine running directly inside the desktop and edge server binary. Delivers high-concurrency ACID writes, sub-millisecond read times via tuned in-memory pragmas, and non-blocking hot backups without database servers."
+keywords: ["SQLite", "WAL Mode", "Edge Computing", "Embedded Database", "GORM", "Zero-daemon", "Hot Backup", "Industrial IT", "PostgreSQL Compatible"]
+related_features: ["oee-engine", "iot-gateway", "compliance-reports"]
+---
+
+## Industrial Reliability Without Database Administrators
+
+Small and mid-sized machine shops rarely have database administrators to patch or maintain external database daemons. Kaarya embeds an industrial-grade SQLite engine directly into the core Go executable:
+
+### High-Concurrency Industrial Tuning
+- **Write-Ahead Logging (WAL Mode):** Decouples readers from writers so concurrent dashboard analytics queries never block high-frequency IoT telemetry writes.
+- **In-Memory Page Cache:** Allocates 64MB of RAM to SQLite page caching plus 256MB memory-mapped I/O, ensuring active shifts, machine statuses, and cycle times stay in fast memory.
+- **Dirty Shutdown Resilience:** `PRAGMA synchronous=NORMAL` guarantees database integrity against abrupt shopfloor power cuts without manual recovery.
+
+### Zero-Downtime Hot Backups & Migration
+- **Online Hot Backups:** Non-blocking backups via `VACUUM INTO` generate clean, atomic snapshots of the entire factory ledger without interrupting machine data streams.
+- **Single-File Portability:** Complete production history is contained in a single file (`kaarya.db`), simplifying disaster recovery, USB drive archiving, and offsite copies.
+- **Transparent PostgreSQL Path:** Built on an abstracted GORM persistence layer, enabling multi-node enterprise plants to switch to PostgreSQL simply by updating `config.json`.

@@ -1,0 +1,56 @@
+---
+id: "traceability"
+title: "Full Genealogy & Traceability"
+tagline: "Machine → Operator → Tool → Material Lot → Cycle Time → Inspection — per serial number"
+category: "compliance"
+status: "shipped"
+version: "1.0.0"
+tier: "core"
+specs:
+  depth: "Infinite (recursive BOM)"
+  granularity: "Per serial / per lot / per batch"
+  air_gap: true
+  query_latency_ms: 50
+  export_formats: ["PDF", "CSV", "JSON", "GraphQL"]
+included_in: ["core", "pro", "enterprise"]
+pro_gated: ["multi-plant-genealogy", "supplier-portal", "blockchain-anchor"]
+icon: "git-branch"
+hero_image: "/images/features/traceability-hero.png"
+screenshots:
+  - "/images/features/genealogy-tree.png"
+  - "/images/features/lot-trace.png"
+description: "Complete forward and backward traceability from live production data. Genealogy tree for IATF 16949 §8.5.1.1. DHR for ISO 13485. FAIR genealogy for AS9100. One-click export. Air-gap native."
+keywords: ["Traceability", "Genealogy", "IATF 16949", "AS9100", "ISO 13485", "DHR", "UDI", "BOM", "Serial Number", "Lot Tracking", "Forward Trace", "Backward Trace"]
+related_features: ["compliance-reports", "oee-engine", "iot-gateway", "ncr-capa"]
+---
+
+## Traceability That Passes Audit
+Not a separate module. Not a "quality add-on." Traceability is the natural byproduct of running production on Kaarya. Every cycle, every inspection, every downtime reason — linked automatically.
+
+### What's Traced (Automatically)
+| Level | Data Captured | Source |
+|-------|---------------|--------|
+| **Machine** | CNC/PLC ID, firmware, calibration cert | IoT Gateway |
+| **Operator** | Badge ID, shift, certification, language | Mobile App / Shift Login |
+| **Tool** | Tool ID, offset, wear compensation, life counter | PLC / Manual entry |
+| **Material Lot** | PO, heat/lot number, CoA, supplier | Barcode scan / ERP sync |
+| **Cycle** | Actual cycle time, spindle speed, feed, load, temp | PLC (500ms) |
+| **Inspection** | Dimension, result, gauge ID, GR&R status | Manual / CMM import |
+
+### Query Patterns (Sub-50ms)
+- **Forward**: "Where did Lot #A442 go?" → All machines, operators, serial numbers, shipments
+- **Backward**: "What went into Serial #SN-7788?" → Full genealogy tree → PDF in 1 click
+- **Containment**: "Which parts used Tool T-12 after 10,000 cycles?" → Affected serials + customers
+- **Audit**: "Show IATF 8.5.1.1 evidence for Customer X audit" → Pre-filtered genealogy pack
+
+### Standards Mapping
+| Standard | Clause | Kaarya Evidence |
+|----------|--------|-----------------|
+| **IATF 16949** | 8.5.1.1 | Complete genealogy per lot/serial |
+| **AS9100** | 8.5.2 | FAIR genealogy (Forms 1/2/3) |
+| **ISO 13485** | 8.2.6 | DHR per UDI-DI |
+| **FDA 21 CFR 820** | 180 | DHR + e-signature ready |
+| **CMMC** | 3.12 | Audit trail + access control |
+
+### Air-Gap Native
+Full genealogy queries run on local SQLite/PostgreSQL. Export → Print → Hand to auditor. Zero cloud.

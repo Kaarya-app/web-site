@@ -1,0 +1,48 @@
+---
+id: "mobile-app"
+title: "Kaarya Mobile Floor Companion"
+tagline: "Pocket Andon alerts, operator shift logging, and mobile downtime tracking in 7 Indian languages"
+category: "operations"
+status: "beta"
+version: "0.9.0-beta"
+adr: "ADR-0006"
+tier: "pro"
+specs:
+  platforms: ["Android", "iOS", "Progressive Web App"]
+  connectivity: "Local Wi-Fi LAN / Air-Gapped (Zero Internet Required)"
+  discovery: "Automatic UDP Server Discovery (:9955)"
+  offline_mode: "Local SQLite / IndexedDB cache with auto-sync"
+  features: ["Live Andon Board", "One-Tap Downtime Categorization", "Shift Handoff Log", "Part Barcode Scanning", "Voice Input", "7 Indian Languages"]
+  languages: ["English", "Hindi", "Tamil", "Telugu", "Kannada", "Marathi", "Gujarati", "Bengali"]
+included_in: ["pro", "enterprise"]
+pro_gated: ["supervisor-dispatch", "biometric-operator-auth", "custom-workflows"]
+icon: "smartphone"
+hero_image: "/images/features/mobile-companion-hero.png"
+screenshots:
+  - "/images/features/mobile-andon.png"
+  - "/images/features/mobile-downtime-log.png"
+description: "Currently in Beta Mode with pilot deployments across Pune, Coimbatore, Bengaluru. Untethers operators and line supervisors from fixed desktop stations. Runs on low-cost Android/iOS floor tablets and rugged handhelds over internal factory Wi-Fi. 7 Indian languages + voice input for gloved hands. Mandatory downtime reason before 'Resume' — no blank downtime."
+keywords: ["Mobile App", "Android", "iOS", "Shopfloor Tablet", "Operator Ledger", "Andon Alert", "m-MES", "Hindi", "Tamil", "Telugu", "Kannada", "Marathi", "Voice Input"]
+related_features: ["oee-engine", "iot-gateway", "andon-dashboard", "shift-handover"]
+---
+
+## Mobile Floor Companion
+Kaarya Mobile (`apps/mobile`) brings real-time shopfloor telemetry straight to operators and supervisors on the plant floor:
+
+### Operator Mode (Core)
+- **Instant Andon Notifications**: Get alerted to machine stoppages, micro-stops, or tool jams within milliseconds
+- **Fast Downtime Logging**: Categorize breakdown reasons at the machine side without walking back to an office PC
+- **7 Indian Languages**: Hindi, Tamil, Telugu, Kannada, Marathi, Gujarati, Bengali — operators tap in their language
+- **Voice Input**: Speak downtime reason with gloved hands; auto-categorized
+- **Mandatory Reason Gate**: Cannot tap "Resume" without selecting a downtime reason
+- **Shift Handover Log**: Digital, signed, searchable — replaces WhatsApp/whiteboard
+- **Part Barcode Scanning**: Scan → Log → Traceability chain complete
+
+### Supervisor Mode (Pro)
+- **Dispatch & Escalation**: Assign breakdowns to maintenance, quality, tooling with SLA timers
+- **Real-Time Cell View**: All machines in cell on one screen — Red/Amber/Green + OEE %
+- **Shift Summary**: Auto-generated shift report (OEE, downtime Pareto, quality, notes) for shift handover
+- **Biometric Operator Auth** (Pro): Face/Touch ID for operator accountability
+
+### Air-Gapped Local LAN Discovery
+Automatically connects to the on-premise Kaarya server node via UDP broadcast (:9955) — zero internet or cloud connection required. Works in Faraday-cage shops, defence facilities, and remote plants.

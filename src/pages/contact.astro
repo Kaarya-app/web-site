@@ -1,0 +1,370 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const seoTitle = "Contact & Product Inquiry — Kaarya Digital Shopfloor Ledger";
+const seoDescription = "Connect directly with Kaarya engineers for product inquiries, live shopfloor walkthroughs, pilot access, or pricing questions. Direct email: contact-us@kaarya.interstellarhq.in.";
+---
+
+<BaseLayout title={seoTitle} description={seoDescription} keywords={[
+  'Kaarya Contact',
+  'Kaarya Product Inquiry',
+  'MES Software Demo India',
+  'OEE Software Pilot',
+  'CNC Monitoring Demo',
+  'contact-us@kaarya.interstellarhq.in'
+]}>
+  <section class="section border-b border-outline bg-surface-elevated">
+    <div class="container max-w-5xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-sm bg-surface border border-outline font-mono text-xs text-primary font-semibold">
+        <span class="w-2 h-2 rounded bg-secondary animate-pulse"></span>
+        <span>ENGINEERING INQUIRY & PILOT ONBOARDING</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-content mb-4">
+        Direct Product Inquiry & Walkthrough
+      </h1>
+      <p class="text-base sm:text-lg text-content-muted max-w-2xl leading-relaxed">
+        We are actively onboarding select precision machine shops and MSMEs. Request a 30-minute interactive technical demo, pilot evaluation binary, or ask about CNC/PLC edge connectivity.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- Inquiry Form Column -->
+        <div class="lg:col-span-7">
+          <div class="card border-outline bg-surface-elevated p-6 sm:p-8">
+            <h2 class="text-xl font-bold mb-1 flex items-center gap-2 font-display">
+              <span>Send Product Inquiry</span>
+            </h2>
+            <p class="text-xs text-content-muted mb-6">
+              Fill in your factory details below. You will be able to review and send the inquiry directly to <code class="font-mono text-primary font-semibold">contact-us@kaarya.interstellarhq.in</code>.
+            </p>
+
+            <form id="inquiry-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="name" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
+                    Your Name <span class="text-primary">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="e.g. Ramesh Patil"
+                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
+                    Work Email <span class="text-primary">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="ramesh@autocomponents.in"
+                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="phone" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
+                    WhatsApp / Phone <span class="text-primary">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    placeholder="+91 98765 43210"
+                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-mono transition-colors"
+                  />
+                </div>
+                <div>
+                  <label for="company" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
+                    Company / Plant Name <span class="text-primary">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    required
+                    placeholder="e.g. Precision Tech Ltd"
+                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="city" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
+                    Location / Industrial Area
+                  </label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="e.g. Bhosari, Pune / Peenya, BLR"
+                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                  />
+                </div>
+                <div>
+                  <label for="scale" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
+                    Number of CNCs / Machines
+                  </label>
+                  <select
+                    id="scale"
+                    name="scale"
+                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                  >
+                    <option value="1-2 Machines (Core Tier Evaluation)">1-2 Machines (Core Tier)</option>
+                    <option value="3-5 CNCs (Pro Starter)" selected>3-5 CNCs (Pro Starter)</option>
+                    <option value="6-15 Machines (Pro Standard)">6-15 Machines (Pro Standard)</option>
+                    <option value="16-30 Machines (Pro Scale)">16-30 Machines (Pro Scale)</option>
+                    <option value="30+ Machines / Multi-Plant (Enterprise)">30+ Machines / Multi-Plant</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="inquiry_type" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
+                  Inquiry Purpose
+                </label>
+                <select
+                  id="inquiry_type"
+                  name="inquiry_type"
+                  class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                >
+                  <option value="Product Walkthrough & Technical Demo" selected>Schedule 30-min Technical Demo</option>
+                  <option value="Pilot Access & Shopfloor Evaluation">Request Pilot Onboarding Access</option>
+                  <option value="Pricing, Quote & Tally Alignment">Commercials, Quotation & Purchase Order</option>
+                  <option value="CNC & PLC IoT Compatibility (Beta)">CNC / PLC Hardware Compatibility Query (Beta)</option>
+                  <option value="General Question">General Factory Question</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
+                  Your Current Challenge or Questions
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="3"
+                  placeholder="e.g. Currently tracking downtime on paper logs. Need automated shift reports for IATF audit. Want to see live demo of OEE calculations."
+                  class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                ></textarea>
+              </div>
+
+              <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                <button
+                  type="submit"
+                  class="btn-primary py-2.5 px-6 font-semibold text-sm flex-1 flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>Submit Inquiry via Email</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+                <button
+                  type="button"
+                  id="copy-inquiry-btn"
+                  class="btn-secondary py-2.5 px-4 font-mono text-xs flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span id="copy-text">Copy Inquiry Text</span>
+                </button>
+              </div>
+            </form>
+
+            <div id="status-feedback" class="mt-4 p-3 rounded bg-surface border border-outline text-xs text-content-muted hidden"></div>
+          </div>
+        </div>
+
+        <!-- Sidebar / Direct Contact Info -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Direct Email Box -->
+          <div class="card border-primary/40 bg-surface-elevated p-6 relative overflow-hidden">
+            <div class="text-xs font-mono uppercase text-primary font-bold tracking-wider mb-2">Direct Channel</div>
+            <h3 class="text-xl font-bold font-display text-content mb-2">Email Founder & Engineering</h3>
+            <p class="text-sm text-content-muted mb-4">
+              Prefer writing an email directly from your mailbox? We review and respond to every message personally.
+            </p>
+            <div class="p-3 bg-surface rounded border border-outline font-mono text-sm flex items-center justify-between mb-4">
+              <span class="text-primary font-bold select-all">contact-us@kaarya.interstellarhq.in</span>
+              <button 
+                id="copy-email-btn"
+                class="text-xs text-content-muted hover:text-content font-sans border border-outline px-2 py-1 rounded bg-surface-elevated transition-colors"
+              >
+                Copy
+              </button>
+            </div>
+            <a 
+              href="mailto:contact-us@kaarya.interstellarhq.in?subject=Kaarya%20Product%20Inquiry%20from%20Website" 
+              class="btn-secondary w-full text-center text-sm inline-block"
+            >
+              Open Mailbox Directly
+            </a>
+          </div>
+
+          <!-- Fast SLA & Operational Commitments -->
+          <div class="card border-outline bg-surface-elevated p-6 space-y-4">
+            <h4 class="font-bold text-sm uppercase tracking-wider font-mono text-content">Why Inquire with Us?</h4>
+            
+            <div class="flex items-start gap-3 text-sm">
+              <div class="w-5 h-5 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</div>
+              <div>
+                <strong class="text-content block">4-Hour Response SLA</strong>
+                <span class="text-xs text-content-muted">You talk to engineers who understand cycle times, CNC offsets, and shopfloor realities—not sales telecallers.</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 text-sm">
+              <div class="w-5 h-5 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</div>
+              <div>
+                <strong class="text-content block">No Cloud / Air-Gap Guarantee</strong>
+                <span class="text-xs text-content-muted">Kaarya runs 100% locally on your factory LAN. We never ask for internet access or cloud database hooks.</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 text-sm">
+              <div class="w-5 h-5 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</div>
+              <div>
+                <strong class="text-content block">Zero Hardware Lock-In</strong>
+                <span class="text-xs text-content-muted">Evaluations run on any existing Windows, Linux, or Raspberry Pi box already sitting on your floor.</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 text-sm">
+              <div class="w-5 h-5 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">✓</div>
+              <div>
+                <strong class="text-content block">CNC IoT Hardware Validation (Beta)</strong>
+                <span class="text-xs text-content-muted">Tell us your machine models (Siemens, Fanuc, Haas, Mitsubishi) and we will check exact driver compatibility.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Target Hubs Note -->
+          <div class="p-4 rounded border border-outline bg-surface text-xs text-content-muted leading-relaxed font-sans">
+            <span class="text-secondary font-mono font-bold uppercase block mb-1">Active Indian Industrial Clusters</span>
+            Providing local deployment and remote walkthrough support across Pune (Chakan/Bhosari), Bengaluru (Peenya/Bommasandra), Coimbatore, Rajkot, Chennai (Ambattur), and NCR.
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Autofill purpose from URL parameter if present (e.g. ?tier=pro)
+    const urlParams = new URLSearchParams(window.location.search);
+    const tier = urlParams.get('tier');
+    const scaleSelect = document.getElementById('scale') as HTMLSelectElement | null;
+    const inquirySelect = document.getElementById('inquiry_type') as HTMLSelectElement | null;
+    
+    if (tier && inquirySelect && scaleSelect) {
+      if (tier === 'core') {
+        scaleSelect.value = '1-2 Machines (Core Tier Evaluation)';
+        inquirySelect.value = 'Pilot Access & Shopfloor Evaluation';
+      } else if (tier === 'pro') {
+        scaleSelect.value = '3-5 CNCs (Pro Starter)';
+        inquirySelect.value = 'Pricing, Quote & Tally Alignment';
+      } else if (tier === 'cloud') {
+        scaleSelect.value = '30+ Machines / Multi-Plant (Enterprise)';
+        inquirySelect.value = 'Pilot Access & Shopfloor Evaluation';
+      }
+    }
+
+    const form = document.getElementById('inquiry-form') as HTMLFormElement | null;
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    const copyInquiryBtn = document.getElementById('copy-inquiry-btn');
+    const statusFeedback = document.getElementById('status-feedback');
+    const copyText = document.getElementById('copy-text');
+
+    function buildInquiryPayload(): { subject: string; body: string } {
+      const name = (document.getElementById('name') as HTMLInputElement)?.value || '';
+      const email = (document.getElementById('email') as HTMLInputElement)?.value || '';
+      const phone = (document.getElementById('phone') as HTMLInputElement)?.value || '';
+      const company = (document.getElementById('company') as HTMLInputElement)?.value || '';
+      const city = (document.getElementById('city') as HTMLInputElement)?.value || '';
+      const scale = (document.getElementById('scale') as HTMLSelectElement)?.value || '';
+      const inquiryType = (document.getElementById('inquiry_type') as HTMLSelectElement)?.value || '';
+      const message = (document.getElementById('message') as HTMLTextAreaElement)?.value || '';
+
+      const subject = `Kaarya Inquiry: ${inquiryType} - ${company || name}`;
+      const body = `Hello Kaarya Engineering Team,
+
+I would like to submit a product inquiry for Kaarya Digital Shopfloor Ledger.
+
+--- INQUIRY DETAILS ---
+Name: ${name}
+Work Email: ${email}
+Phone / WhatsApp: ${phone}
+Company / Plant: ${company}
+Location: ${city || 'Not specified'}
+Machine Scale: ${scale}
+Inquiry Type: ${inquiryType}
+
+Notes / Current Situation:
+${message || 'Please arrange a technical walkthrough / pilot onboarding details.'}
+
+---
+Sent via website inquiry (kaayra.interstellarhq.in)
+`;
+      return { subject, body };
+    }
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const { subject, body } = buildInquiryPayload();
+        const mailtoUrl = `mailto:contact-us@kaarya.interstellarhq.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Open default email client
+        window.location.href = mailtoUrl;
+
+        if (statusFeedback) {
+          statusFeedback.classList.remove('hidden');
+          statusFeedback.innerHTML = `
+            <div class="text-secondary font-bold mb-1">✓ Mail client opened!</div>
+            <div>If your email client did not launch, please send your inquiry directly to <strong class="text-primary">contact-us@kaarya.interstellarhq.in</strong> or use the "Copy Inquiry Text" button.</div>
+          `;
+        }
+      });
+    }
+
+    if (copyInquiryBtn) {
+      copyInquiryBtn.addEventListener('click', async () => {
+        const { body } = buildInquiryPayload();
+        try {
+          await navigator.clipboard.writeText(body);
+          if (copyText) copyText.textContent = 'Copied to Clipboard!';
+          setTimeout(() => {
+            if (copyText) copyText.textContent = 'Copy Inquiry Text';
+          }, 3000);
+        } catch {
+          alert('Could not copy automatically. Please email contact-us@kaarya.interstellarhq.in directly.');
+        }
+      });
+    }
+
+    if (copyEmailBtn) {
+      copyEmailBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText('contact-us@kaarya.interstellarhq.in');
+          copyEmailBtn.textContent = 'Copied!';
+          setTimeout(() => {
+            copyEmailBtn.textContent = 'Copy';
+          }, 2000);
+        } catch {
+          // fallback
+        }
+      });
+    }
+  </script>
+</BaseLayout>

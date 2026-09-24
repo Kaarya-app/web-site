@@ -1,0 +1,59 @@
+---
+id: "shift-handover"
+title: "Digital Shift Handover"
+tagline: "Replace WhatsApp & whiteboards. Signed, searchable, audit-ready shift logs"
+category: "operations"
+status: "shipped"
+version: "1.0.0"
+tier: "core"
+specs:
+  formats: ["Structured Log", "PDF Report", "Mobile Card"]
+  signoff: "Digital signature + PIN"
+  retention: "Configurable (default 7 years)"
+  air_gap: true
+  languages: 8
+included_in: ["core", "pro", "enterprise"]
+pro_gated: ["auto-summary", "kpi-comparison", "escalation-tracking"]
+icon: "exchange"
+hero_image: "/images/features/handover-hero.png"
+screenshots:
+  - "/images/features/handover-mobile.png"
+  - "/images/features/handover-report.png"
+description: "Shift handover logs that are actually useful. Outgoing operator logs: production count, downtime Pareto, quality issues, maintenance needs, tool status, notes. Incoming operator signs off. Auto-generates shift report PDF. Searchable. Replaces WhatsApp/whiteboard tribal knowledge."
+keywords: ["Shift Handover", "Shift Log", "Digital Logbook", "Operator Handoff", "Shift Report", "Tribal Knowledge", "WhatsApp Replacement", "Audit Trail"]
+related_features: ["mobile-app", "downtime-reasoning", "oee-engine", "compliance-reports", "andon-dashboard"]
+---
+
+## The End of "Rajesh Knows"
+Tribal knowledge lives in WhatsApp groups and operator memory. When Rajesh leaves, the knowledge leaves. Kaarya makes shift handover a structured, signed, searchable record.
+
+### Outgoing Operator Logs (3 minutes)
+| Section | Captured |
+|---------|----------|
+| **Production** | Actual vs target, good/scrap count, OEE % |
+| **Downtime** | Top 3 reasons (auto from Pareto), total lost time |
+| **Quality** | Open NCRs, gauge issues, first-article status |
+| **Maintenance** | Open work orders, tool wear, PM due |
+| **Tools** | Active tools, offsets, life remaining |
+| **Notes** | Free text + voice → structured tags |
+
+### Incoming Operator Signs Off
+- Reviews pre-filled log (auto-populated from live data)
+- Adds "Taking over" notes
+- Digital signature + PIN
+- Timestamped, immutable, searchable
+
+### Auto-Generated Shift Report (PDF)
+- **Header**: Shift, date, cell, operators (in/out), supervisor
+- **KPIs**: OEE, Availability, Performance, Quality, Good/Scrap
+- **Downtime Pareto**: Top 5 reasons with charts
+- **Quality**: NCRs opened/closed, scrap by reason
+- **Maintenance**: WO status, tool changes
+- **Notes**: Both operators' notes, flagged items
+- **Signatures**: Digital signatures with timestamps
+
+### Pro/Enterprise Adds
+- **Auto-Summary**: AI-generated executive summary for plant manager
+- **KPI Comparison**: Shift vs Shift, Day vs Day, Week vs Week trends
+- **Escalation Tracking**: Flagged items auto-assigned, tracked to closure
+- **Multi-Cell Rollup**: Plant-wide shift report from cell reports

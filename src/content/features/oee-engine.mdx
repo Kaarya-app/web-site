@@ -1,0 +1,42 @@
+---
+id: "oee-engine"
+title: "Real-Time OEE Engine & Visual Analytics"
+tagline: "60fps animated multi-line spline trends, micro-sparklines, and dynamic time-range analytics"
+category: "analytics"
+status: "shipped"
+version: "1.0.0"
+adr: "ADR-0002"
+tier: "core"
+specs:
+  chart_engine: "Apache ECharts (60fps Canvas)"
+  time_ranges: ["7D", "1M", "3M", "6M", "YTD", "1Y", "Custom"]
+  sampling_rate_ms: 500
+  metrics: ["OEE", "Availability", "Performance", "Quality", "TEEP"]
+  air_gap: true
+  storage: "SQLite (WAL) / PostgreSQL"
+included_in: ["core", "pro", "enterprise"]
+pro_gated: ["ai-downtime-forecasting", "cross-factory-benchmarking"]
+icon: "gauge"
+hero_image: "/images/features/oee-hero.png"
+screenshots:
+  - "/images/features/oee-dashboard.png"
+description: "Precision visual analytics and OEE decomposition computed live on the edge. Features 60fps Apache ECharts multi-line splines, interactive series toggles, 85% world-class benchmark targets, micro-sparklines on KPI cards, and instant dynamic date ranges without full-page reloads."
+keywords: ["OEE", "Availability", "Performance", "Quality", "TEEP", "Apache ECharts", "Visual Analytics", "Trend Charts", "Sparklines", "Foundry Industrial"]
+related_features: ["iot-gateway", "andon-dashboard", "compliance-reports", "sqlite-edge-engine"]
+---
+
+## Real-Time Equipment Effectiveness & Visual Trends
+
+Kaarya's OEE engine computes the manufacturing gold standard live at machine speed and renders it through high-performance Apache ECharts:
+
+- **Availability:** Actual Run Time / Planned Production Time (captures downtime & breakdowns)
+- **Performance:** Total Parts / (Ideal Rate × Run Time) (captures speed loss, micro-stops)
+- **Quality:** Good Parts / Total Parts (captures defect/scrap losses)
+- **TEEP:** OEE against 24/7/365 calendar time (true capacity utilization)
+
+### Interactive 60fps Visual Analytics
+- **Multi-Line Bezier Splines:** Simultaneous visual decomposition of OEE (Cyan), Availability (Emerald), Performance (Amber), and Quality (Purple) with smooth gradient underlays.
+- **Dynamic Time Ranges:** Instant toggles for `7D`, `1M`, `3M`, `6M`, `YTD`, `1Y`, and custom popover ranges triggering reactive backend recalculations.
+- **World-Class Benchmark:** Integrated 85% World-Class OEE dashed target reference line and magnetic crosshair tooltips.
+- **Micro-Sparklines & Machine Rankings:** Borderless trend splines inside primary KPI cards and color-graded machine performance ranking bars (`>85%` green, `70–85%` amber, `<70%` red).
+- **Embedded WebKit & Air-Gap Optimized:** Canvas-based rendering runs smoothly at 60fps on shopfloor Linux panel PCs (WebKitGTK) with zero cloud round-trips.

@@ -1,0 +1,55 @@
+---
+id: "iot-gateway"
+title: "CNC & PLC IoT Automation Gateway"
+tagline: "Native Modbus TCP, OPC UA, MQTT Sparkplug B & Edge Ingestion (Beta: Physical Machine Testing in Progress)"
+category: "connectivity"
+status: "beta"
+version: "0.9.0-beta"
+adr: "ADR-0011"
+tier: "pro"
+specs:
+  protocols_native: ["Modbus TCP (goburrow)", "OPC UA (gopcua)", "MQTT Sparkplug B (paho.mqtt)", "Internal Telemetry Simulator"]
+  external_gateway: "HTTP REST Ingestion (POST /api/v1/iot/telemetry, ADR-0012)"
+  deployment: "Embedded inside core Go binary"
+  latency_ms: 2
+  max_connections: 50
+  air_gap: true
+  hardware_status: "Beta: Internal simulator & REST ingestion stable; physical shopfloor machine validation active"
+  auth: ["X-IoT-Token", "Bearer JWT"]
+  data_model: "Normalized Tag Pipeline → OEE & Andon"
+included_in: ["core", "pro", "enterprise"]
+pro_gated: ["opcua-security-certs", "mqtt-tls-mtls", "custom-protocol-drivers"]
+icon: "cpu"
+hero_image: "/images/features/iot-gateway-hero.png"
+screenshots:
+  - "/images/features/iot-gateway-dashboard.png"
+  - "/images/features/iot-gateway-config.png"
+description: "Embedded industrial IoT gateway service running directly inside the Kaarya binary. Connects natively to PLCs and CNCs via Modbus TCP, OPC UA, and MQTT Sparkplug B with automatic tag mapping, or ingests telemetry from external Node-RED and Ignition Edge gateways over HTTP. (Currently in Beta as we validate integrations on physical shopfloor machines)."
+keywords: ["CNC IoT Automation", "IoT Gateway", "Modbus TCP", "OPC UA", "MQTT Sparkplug B", "Node-RED", "Ignition Edge", "PLC Telemetry", "CNC Monitoring", "Air-gap"]
+related_features: ["oee-engine", "andon-dashboard", "sqlite-edge-engine"]
+---
+
+## Industrial Connectivity Inside a Single Binary (Beta)
+
+> **Shopfloor Validation Notice (Beta):** The software protocol engines (Modbus TCP, OPC UA, MQTT Sparkplug B, HTTP edge ingestion) and the telemetry simulator are fully implemented and verified. We are currently actively conducting on-site shopfloor pilot tests on physical CNC mills, lathes, and PLCs. While hardware testing is in progress, all core software capabilities—including OEE calculation, downtime reasoning, shift handovers, and compliance records—are fully stable and production-ready.
+
+Automated machine telemetry is the foundation of credible OEE and real-time Andon status. Kaarya eliminates complex external middleware stacks by embedding multi-protocol industrial adapters directly into the core binary:
+
+### Native Protocol Adapters (ADR-0011)
+- **Modbus TCP:** Polling cycles (configurable 100ms–10s) reading holding registers and coils via `goburrow/modbus`.
+- **OPC UA:** Persistent binary sessions and monitored item subscriptions via `gopcua/opcua` for Siemens S7-1200/1500 and modern CNCs.
+- **MQTT Sparkplug B:** Structured industrial MQTT payload decoding via `paho.mqtt.golang` across edge device namespaces.
+- **Telemetry Simulator:** Built-in simulation adapter generating realistic cycle and status telemetry for demo and testing without physical machinery.
+
+### Normalized Telemetry Pipeline
+- Maps raw industrial tag addresses (e.g. `40001`, `ns=2;s=Line1.Speed`) to standard machine metrics (`status`, `speed_actual`, `part_count_good`, `scrap_count`).
+- Automatically associates incoming machine cycle signals with active shifts, updating production counts and downtime intervals in real time.
+
+### External Edge Gateway Integration (ADR-0012)
+- For plants with pre-existing edge hardware (Node-RED on Revolution Pi, Ignition Edge on Opto 22), Kaarya provides a hardened HTTP endpoint:
+```bash
+curl -X POST https://your-kaarya-node/api/v1/iot/telemetry \
+  -H "X-IoT-Token: <gateway-token>" \
+  -H "Content-Type: application/json" \
+  -d '{"machine_id":"CNC-01","metrics":{"status":"running","speed_actual":1250}}'
+```

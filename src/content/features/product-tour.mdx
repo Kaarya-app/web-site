@@ -1,0 +1,40 @@
+---
+id: "product-tour"
+title: "Interactive Role-Based Product Tour"
+tagline: "Zero-friction operator & manager onboarding directly inside the shopfloor terminal"
+category: "operations"
+status: "shipped"
+version: "1.0.0"
+adr: "ADR-0009"
+tier: "core"
+specs:
+  tracks: ["Operator Essentials (3 steps)", "Plant Manager OEE (4 steps)", "Admin Setup (3 steps)"]
+  engine: "Driver.js (~5KB)"
+  air_gap: true
+  persistence: "Client-side localStorage"
+  styling: "Foundry Industrial Dark Theme"
+included_in: ["core", "pro", "enterprise"]
+pro_gated: []
+icon: "compass"
+hero_image: "/images/features/tour-hero.png"
+screenshots:
+  - "/images/features/tour-operator.png"
+  - "/images/features/tour-manager.png"
+description: "Interactive role-based onboarding designed for industrial touchscreens and desktop stations. Guides operators to log shifts and plant managers to inspect OEE in under 60 seconds. Runs 100% offline with zero external CDN scripts."
+keywords: ["Product Tour", "Onboarding", "Role-based", "Driver.js", "Foundry Industrial", "Shopfloor UX", "Air-gap", "Operator Training"]
+related_features: ["oee-engine", "andon-dashboard", "shift-handover"]
+---
+
+## Role-Based Shopfloor Onboarding
+
+Manufacturing floor staff have distinct operational duties and technical backgrounds. Kaarya replaces heavy printed manuals with contextual, non-intrusive interactive guides directly in the UI:
+
+### Modular Tour Tracks
+- **Operator Essentials (3 Steps):** Highlights the live Machine Andon grid, one-tap shift & scrap logging, and the downtime call-for-help button.
+- **Plant Manager / OEE Walkthrough (4 Steps):** Explains the primary OEE KPI strip, machine efficiency heatmap, one-click PDF/CSV export, and financial scrap costing.
+- **Admin Setup Tour (3 Steps):** Guides initial machine and shift configuration, worker roster management, and LAN server node pairing.
+
+### Engineered for the Factory Floor
+- **100% Offline & Air-Gapped:** Bundled inside the application; requires zero external CDN requests or tracking scripts.
+- **Foundry Industrial Aesthetics:** High-contrast dark backdrop (`#101a35`), engineered accent indicators (Action Cobalt & Safety Green), and crisp IBM Plex Mono step indicators.
+- **Persistent & On-Demand:** Remembers completion via local storage and offers immediate relaunch anytime from the sidebar help menu or settings.

@@ -1,0 +1,48 @@
+---
+id: "multi-plant-sync"
+title: "Multi-Plant Federation & Sync"
+tagline: "Federate edge shopfloor nodes into a central executive multi-site ledger"
+category: "platform"
+status: "alpha"
+version: "0.4.0-alpha"
+adr: "ADR-0007"
+tier: "cloud"
+specs:
+  protocol: "gRPC over mTLS / Store-and-Forward"
+  offline_buffer_mb: 500
+  bandwidth_optimized: true
+  e2e_encryption: true
+  sync_modes: ["Real-time (WAN)", "Scheduled (Daily)", "Manual (Air-gap export)"]
+included_in: ["pro", "enterprise"]
+pro_gated: ["multi-site-federation", "global-benchmarking", "corporate-dashboard"]
+icon: "globe"
+hero_image: "/images/features/multi-plant-hero.png"
+screenshots:
+  - "/images/features/multi-plant-overview.png"
+description: "Currently in Alpha Mode — architectural prototyping with pilot design partners. Enables corporate plant managers to aggregate OEE, scrap rates, energy, and compliance status across multiple facilities. Store-and-forward buffer guarantees zero data loss during multi-day WAN outages. Air-gap export/import for fully isolated plants."
+keywords: ["Multi-Plant", "Federation", "Sync", "Enterprise MES", "Global OEE", "Corporate Dashboard", "Store-and-Forward", "Air-gap Export"]
+related_features: ["oee-engine", "iot-gateway", "compliance-reports", "energy-monitoring", "andon-dashboard"]
+---
+
+## Alpha R&D Status
+Currently in early architectural prototyping with design partners in Pune and Bengaluru. Designed with a store-and-forward buffer architecture to guarantee zero data loss even during multi-day factory WAN outages.
+
+### Sync Modes
+| Mode | Use Case | Data Freshness |
+|------|----------|----------------|
+| **Real-time (WAN)** | Connected plants, reliable fiber | < 5 sec |
+| **Scheduled (Daily)** | Intermittent connectivity, cost-sensitive | 24 hr batches |
+| **Manual (Air-gap export)** | Defence/ITAR plants, zero outbound | On-demand |
+
+### What Federates
+- **OEE & TEEP** — Rollup by plant, cell, machine type
+- **Scrap & Quality** — Pareto across sites, supplier comparison
+- **Energy** — kWh/part benchmarking, demand charge optimization
+- **Compliance Status** — Audit readiness dashboard per plant
+- **Asset Health** — MTTR/MTBF, predictive maintenance alerts
+
+### Security
+- gRPC over mTLS with mutual authentication
+- End-to-end encryption (keys never leave edge nodes)
+- 500MB local buffer — survives extended outages
+- Air-gap export: Signed JSON bundle → USB → Import at HQ

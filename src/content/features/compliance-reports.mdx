@@ -1,0 +1,44 @@
+---
+id: "compliance-reports"
+title: "Synchronous PDF & CSV Export"
+tagline: "Auditor-ready shift dossiers and Excel-compatible CSV exports in seconds"
+category: "compliance"
+status: "shipped"
+version: "1.0.0"
+adr: "ADR-0001"
+tier: "pro"
+specs:
+  pdf_engine: "Go gofpdf (Zero-lag synchronous generation)"
+  csv_format: "UTF-8 with BOM for Excel compatibility"
+  date_filtering: "Last 7 days default, up to 90 days"
+  role_security: "30-day operator window, 90-day admin window"
+  air_gap: true
+  generation_time_sec: 2
+included_in: ["core", "pro", "enterprise"]
+pro_gated: ["auto-schedule", "multi-plant-rollup", "custom-templates"]
+icon: "file-check"
+hero_image: "/images/features/compliance-hero.png"
+screenshots:
+  - "/images/features/ppap-package.png"
+  - "/images/features/fair-forms.png"
+description: "Synchronous PDF and CSV production report export engine. Generates formal branded shift dossiers with summary metrics, OEE breakdowns, scrap costing, and worker logs, alongside denormalized UTF-8 CSVs ready for spreadsheet auditing."
+keywords: ["PDF Export", "CSV Export", "OEE Reports", "Shift Dossier", "gofpdf", "Excel BOM", "Auditor-Ready", "Foundry Industrial"]
+related_features: ["oee-engine", "iot-gateway", "traceability"]
+---
+
+## Auditor-Ready Shift Reports & Data Portability
+
+Exporting manufacturing data should not require waiting for background batch queues or dealing with mangled CSV text encodings. Kaarya provides fast, synchronous reporting straight from the shopfloor ledger:
+
+### Formal PDF Shift Dossiers
+- **Built in Go (`gofpdf`):** Generates multi-page formatted reports in under 2 seconds without external browser automation or headless Chrome overhead.
+- **Foundry Industrial Layout:** Branded headers, executive KPI summary strips, detailed production log tables, and machine/worker breakdown sections.
+- **Financial & Scrap Costing:** Automatically includes scrap costs and machine downtime cost-per-hour totals.
+
+### Excel-Optimized Denormalized CSV
+- **UTF-8 with Byte Order Mark (BOM):** Opens seamlessly in Microsoft Excel without character encoding corruptions or CSV delimiter prompt issues.
+- **Denormalized Metrics:** Pre-calculates Availability, Performance, Quality, and overall OEE across every recorded run for direct pivot table analysis.
+
+### Secure Role-Based Filtering
+- **Smart Date Defaults:** Pre-populates the modal with the "Last 7 Days" and performs real-time date range validation.
+- **Access Guardrails:** Restricts floor operators to a maximum 30-day window while granting administrators up to 90 days of export history.

@@ -1,0 +1,101 @@
+:root {
+  /* Surface & Backgrounds */
+  --color-surface: #f8fafc;
+  --color-surface-elevated: #ffffff;
+  --color-surface-muted: #f1f5f9;
+
+  /* Content & Text */
+  --color-content: #0f172a;
+  --color-content-muted: #475569;
+
+  /* Borders & Outlines */
+  --color-outline: #e2e8f0;
+  --color-outline-subtle: #f1f5f9;
+
+  /* Brand Accents */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-subtle: rgba(37, 99, 235, 0.1);
+  --color-primary-border: rgba(37, 99, 235, 0.3);
+
+  --color-secondary: #16a34a;
+  --color-secondary-subtle: rgba(22, 163, 74, 0.1);
+  --color-secondary-border: rgba(22, 163, 74, 0.3);
+
+  /* Status Colors */
+  --color-status-alpha: #b45309;
+  --color-status-alpha-subtle: rgba(245, 158, 11, 0.12);
+  --color-status-alpha-border: rgba(245, 158, 11, 0.3);
+
+  --color-status-beta: #7c3aed;
+  --color-status-beta-subtle: rgba(139, 92, 246, 0.12);
+  --color-status-beta-border: rgba(139, 92, 246, 0.3);
+
+  --color-status-shipped: #059669;
+  --color-status-shipped-subtle: rgba(16, 185, 129, 0.1);
+  --color-status-shipped-border: rgba(16, 185, 129, 0.25);
+
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
+  --shadow-card: 0 1px 3px 0 rgb(15 23 42 / 0.08);
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-display: "Space Grotesk", system-ui, -apple-system, sans-serif;
+
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-12: 4rem;
+  --space-16: 6rem;
+
+  /* Radii */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-full: 9999px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: #0b1326;
+    --color-surface-elevated: #141d33;
+    --color-surface-muted: #1a2540;
+
+    --color-content: #dae2fd;
+    --color-content-muted: #94a3b8;
+
+    --color-outline: #1e293b;
+    --color-outline-subtle: #141d33;
+
+    --color-primary: #3b82f6;
+    --color-primary-hover: #60a5fa;
+    --color-primary-subtle: rgba(59, 130, 246, 0.15);
+    --color-primary-border: rgba(59, 130, 246, 0.35);
+
+    --color-secondary: #4ade80;
+    --color-secondary-subtle: rgba(74, 222, 128, 0.15);
+    --color-secondary-border: rgba(74, 222, 128, 0.35);
+
+    --color-status-alpha: #fbbf24;
+    --color-status-alpha-subtle: rgba(251, 191, 36, 0.15);
+    --color-status-alpha-border: rgba(251, 191, 36, 0.35);
+
+    --color-status-beta: #a78bfa;
+    --color-status-beta-subtle: rgba(167, 139, 250, 0.15);
+    --color-status-beta-border: rgba(167, 139, 250, 0.35);
+
+    --color-status-shipped: #34d399;
+    --color-status-shipped-subtle: rgba(52, 211, 153, 0.15);
+    --color-status-shipped-border: rgba(52, 211, 153, 0.3);
+
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.3);
+  }
+}

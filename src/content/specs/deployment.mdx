@@ -1,0 +1,18 @@
+---
+id: "deployment"
+title: "Deployment & Architecture Specifications"
+category: "infrastructure"
+items:
+  architectures: ["linux/amd64", "linux/arm64", "windows/amd64", "darwin/arm64", "android", "ios"]
+  footprint_mb: 45
+  ram_idle_mb: 32
+  runtimes: ["Wails v2 Desktop Shell", "Standalone Gin API Server (:8080)", "Docker Multi-Instance", "Mobile Companion (Android/iOS)"]
+  storage_engines: ["Embedded SQLite with WAL mode (Default, ADR-0010)", "PostgreSQL (Enterprise / Cloud)"]
+  protocols_supported: ["Modbus TCP", "OPC UA", "MQTT Sparkplug B", "External HTTP Telemetry Ingestion (ADR-0012)"]
+  ui_framework: "Nuxt 4 SPA (Tailwind CSS v4, Apache ECharts 60fps, Foundry Industrial Design)"
+  air_gap_ready: true
+---
+
+## Deployment & Edge Architecture
+
+Kaarya operates as a dual-runtime, single-binary industrial operations ledger. It embeds a complete Go backend, an industrial SQLite database, and a high-performance Nuxt 4 frontend directly into a desktop application without external database daemons or cloud requirements.
