@@ -116,22 +116,100 @@ const jsonLd = {
   <body class="min-h-screen flex flex-col bg-surface text-content">
     <header class="border-b border-outline bg-surface-elevated sticky top-0 z-40">
       <div class="container flex items-center justify-between h-16 px-4">
-        <a href="/" class="flex items-center gap-2 font-display text-xl font-bold tracking-tight text-content no-underline">
-          <span class="px-2 h-7 rounded bg-primary text-white flex items-center justify-center text-sm font-bold">कार्य</span>
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-1.5 sm:gap-2 font-display text-lg sm:text-xl font-bold tracking-tight text-content no-underline shrink-0">
+          <span class="px-2 h-7 rounded bg-primary text-white flex items-center justify-center text-xs sm:text-sm font-bold">कार्य</span>
           <span>KAARYA</span>
         </a>
-        <nav class="flex items-center gap-4 sm:gap-6 text-sm font-medium">
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
           <a href="/#features" class="text-content-muted hover:text-content no-underline transition-colors">Features</a>
           <a href="/demo" class="text-content-muted hover:text-content no-underline transition-colors flex items-center gap-1.5">
             <span>Demo</span>
             <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-primary/20 text-primary uppercase font-bold">Tour</span>
           </a>
-          <a href="/#upcoming" class="text-content-muted hover:text-content no-underline transition-colors hidden sm:inline">Roadmap</a>
+          <a href="/#upcoming" class="text-content-muted hover:text-content no-underline transition-colors">Roadmap</a>
           <a href="/#pricing" class="text-content-muted hover:text-content no-underline transition-colors">Pricing</a>
-          <a href="/contact" class="btn-primary text-xs px-3.5 py-1.5 ml-1 sm:ml-2">Inquire & Book Demo</a>
         </nav>
+
+        <!-- Header Actions: Primary Button + Mobile Toggle -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a 
+            href="/contact" 
+            class="btn-primary text-xs px-3 sm:px-3.5 py-1.5 font-semibold whitespace-nowrap shrink-0 shadow-sm"
+          >
+            <span class="sm:hidden">Inquire</span>
+            <span class="hidden sm:inline">Inquire & Book Demo</span>
+          </a>
+
+          <!-- Mobile Menu Toggle Button -->
+          <button
+            type="button"
+            id="mobile-menu-toggle"
+            class="md:hidden p-1.5 rounded border border-outline bg-surface text-content-muted hover:text-content hover:border-primary transition-colors focus:outline-none"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
+            <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobile-menu" class="hidden md:hidden border-t border-outline bg-surface-elevated px-4 py-4 space-y-3">
+        <a href="/#features" class="mobile-nav-link block py-1.5 text-sm text-content-muted hover:text-primary transition-colors font-medium">Features & Capabilities</a>
+        <a href="/demo" class="mobile-nav-link flex items-center justify-between py-1.5 text-sm text-content-muted hover:text-primary transition-colors font-medium">
+          <span>Interactive Demo Tour</span>
+          <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-primary/20 text-primary uppercase font-bold">New</span>
+        </a>
+        <a href="/#upcoming" class="mobile-nav-link block py-1.5 text-sm text-content-muted hover:text-primary transition-colors font-medium">Roadmap (Beta & Alpha)</a>
+        <a href="/#pricing" class="mobile-nav-link block py-1.5 text-sm text-content-muted hover:text-primary transition-colors font-medium">Transparent Pricing</a>
+        <div class="pt-2 border-t border-outline flex items-center justify-between text-xs text-content-muted font-mono">
+          <span>Inquiries:</span>
+          <a href="mailto:contact-us@kaarya.interstellarhq.in" class="text-primary hover:underline">contact-us@kaarya.interstellarhq.in</a>
+        </div>
       </div>
     </header>
+
+    <script>
+      const toggleBtn = document.getElementById('mobile-menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      if (toggleBtn && mobileMenu && hamburgerIcon && closeIcon) {
+        toggleBtn.addEventListener('click', () => {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          if (isOpen) {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+          } else {
+            mobileMenu.classList.remove('hidden');
+            hamburgerIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Close menu on clicking nav link
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    </script>
 
     <main class="flex-1">
       <slot />
