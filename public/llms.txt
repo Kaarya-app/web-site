@@ -1,0 +1,33 @@
+# Kaarya (कार्य) — Industrial Manufacturing Operations Management (MOM / MES) & Digital Shopfloor Ledger
+
+> 100% Made in India. Local-first, air-gapped manufacturing operations management, live OEE tracking, and digital shopfloor ledger engineered for Indian CNC machine shops, Tier-1/2 automotive suppliers, and discrete manufacturing MSMEs.
+
+## Core Value Proposition
+- **Air-Gapped Native:** Runs 100% offline on local factory LAN with zero cloud requirement. Embedded SQLite WAL engine on a single PC, or high-concurrency PostgreSQL cluster.
+- **Shopfloor Usability:** Touchscreen interface supporting 8 Indian languages (Hindi, Marathi, Tamil, Telugu, Kannada, Gujarati, Bengali, English) with voice dictation for downtime logging.
+- **Standardized OEE Engine:** Real-time Availability, Performance, Quality, and TEEP calculations at sub-500ms latency.
+- **Governance & Compliance:** Signed digital shift handover dossiers in official PDF format ready for IATF 16949 §8.5.1 and AS9100 surveillance audits.
+- **PLC Automation:** Direct software connectors for Modbus TCP, OPC UA, and MQTT Sparkplug B (Fanuc, Haas, Siemens, Mitsubishi) with zero proprietary hardware lock-in.
+
+## Pricing Tiers (Engineered for Indian MSMEs in INR ₹)
+- **Core Edition:** Free Forever for up to 2 machines/cells. 100% offline, manual OEE, 35 downtime reason codes, CSV export.
+- **Pro Starter Edition:** ₹24,990 / plant / year (~₹2,080/mo equivalent). Fleet license for up to 5 machines. Automated PLC telemetry, multi-shift comparison, downtime/scrap Pareto, worker efficiency, official PDF shift dossiers. Matches Tally Gold rental pricing (~₹13/machine/day).
+- **Pro Standard Edition:** ₹49,990 / plant / year (~₹4,160/mo equivalent). Fleet license for up to 15 machines with high-concurrency PostgreSQL LAN scale.
+- **Pro Scale Edition:** ₹89,990 / plant / year (~₹7,490/mo equivalent). Fleet license for up to 30 machines, custom downtime taxonomies, 4-hour SLA.
+- **Cloud / Enterprise Edition:** ₹2,49,000 / plant / year. Managed cloud hosting (`yourshop.kaarya.in`), multi-site aggregation, SSO (Azure AD, Okta), and edge store-and-forward buffering.
+- **Perpetual Capex Decoy:** ₹1,79,000 one-time upfront + ₹35,000/yr AMC (Year 2+) for traditional balance-sheet asset capitalization.
+
+## Technical Architecture & Specifications
+- **Runtimes:** Wails v2 desktop shell (WebKit/WebView2), standalone Gin REST server (`:8080`), Docker multi-instance container.
+- **Frontend:** Nuxt 4 SPA, Tailwind CSS v4, Apache ECharts 60fps, Foundry Industrial design system.
+- **Backend:** Go 1.24, GORM, SQLite (WAL mode) / PostgreSQL.
+- **Licensing:** Offline asymmetric Ed25519 cryptographic license certificates.
+
+## Machine-Readable AI Manifest
+For full programmatic feature lists, specifications, and structured pricing:
+- API endpoint: https://kaayra.interstellarhq.in/ai-manifest.json
+
+## Contact & Inquiries
+- Official Website: https://kaayra.interstellarhq.in
+- Inquiries & Pilot Onboarding: contact-us@kaarya.interstellarhq.in
+- Interactive Demo Tour: https://kaayra.interstellarhq.in/demo

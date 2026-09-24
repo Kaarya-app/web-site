@@ -12,8 +12,8 @@ interface Props {
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') || 'https://kaayra.interstellarhq.in';
 
 const {
-  title = 'कार्य (Kaarya) — 100% Made in India Digital Shopfloor Ledger & Industrial MES',
-  description = '100% Made in India. Local-first, air-gapped manufacturing operations management and live OEE tracking for Indian CNC machine shops, Tier-1/2 automotive suppliers, and MSMEs. Zero per-seat fee, Hindi/Tamil/Telugu/Kannada/Marathi operator UI, IATF 16949 audit ready.',
+  title = 'Kaarya (कार्य) — Made in India Shopfloor Ledger & OEE Software',
+  description = '100% Made in India air-gapped shopfloor ledger & OEE software for CNC machine shops. Hindi/Marathi UI, zero per-seat fees. Pass IATF 16949 in 4 hours.',
   ogImage = '/images/og-default.png',
   canonical = Astro.url.pathname,
   keywords = [
@@ -55,19 +55,58 @@ const jsonLd = {
         name: 'India',
       },
       inLanguage: ['en-IN', 'hi', 'ta', 'te', 'kn', 'mr'],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        ratingCount: '48',
-        bestRating: '5',
-        worstRating: '1',
-      },
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'INR',
-        description: 'Core edition free forever for up to 2 machines; Pro starts at ₹24,990/year flat plant license.',
-      },
+      offers: [
+        {
+          '@type': 'Offer',
+          name: 'Kaarya Core Edition',
+          price: '0',
+          priceCurrency: 'INR',
+          priceValidUntil: '2027-12-31',
+          availability: 'https://schema.org/InStock',
+          description: 'Core edition free forever for up to 2 machines (manual entry, 100% offline).',
+          url: `${siteUrl}/#pricing`,
+        },
+        {
+          '@type': 'Offer',
+          name: 'Kaarya Pro Starter',
+          price: '24990',
+          priceCurrency: 'INR',
+          priceValidUntil: '2027-12-31',
+          availability: 'https://schema.org/InStock',
+          description: 'Annual plant license for up to 5 machines. Automated PLC telemetry, multi-shift analytics, PDF shift dossiers.',
+          url: `${siteUrl}/#pricing`,
+        },
+        {
+          '@type': 'Offer',
+          name: 'Kaarya Pro Standard',
+          price: '49990',
+          priceCurrency: 'INR',
+          priceValidUntil: '2027-12-31',
+          availability: 'https://schema.org/InStock',
+          description: 'Annual plant license for up to 15 machines. High-concurrency PostgreSQL cluster on local LAN.',
+          url: `${siteUrl}/#pricing`,
+        },
+        {
+          '@type': 'Offer',
+          name: 'Kaarya Pro Scale',
+          price: '89990',
+          priceCurrency: 'INR',
+          priceValidUntil: '2027-12-31',
+          availability: 'https://schema.org/InStock',
+          description: 'Annual plant license for up to 30 machines. High-scale shopfloor telemetry, custom taxonomies, priority SLA.',
+          url: `${siteUrl}/#pricing`,
+        },
+        {
+          '@type': 'Offer',
+          name: 'Kaarya Cloud Enterprise',
+          price: '249000',
+          priceCurrency: 'INR',
+          priceValidUntil: '2027-12-31',
+          availability: 'https://schema.org/InStock',
+          description: 'Fully managed cloud hosting for multi-plant operations. Multi-site aggregation, SSO, 99.9% SLA.',
+          url: `${siteUrl}/#pricing`,
+        },
+      ],
       featureList: [
         '100% Made in India Manufacturing Architecture',
         'Real-time OEE Engine (Availability, Performance, Quality, TEEP)',
@@ -90,6 +129,9 @@ const jsonLd = {
       url: siteUrl,
       logo: `${siteUrl}/favicon.svg`,
       email: 'contact-us@kaarya.interstellarhq.in',
+      sameAs: [
+        'https://github.com/Kaarya-app',
+      ],
       address: {
         '@type': 'PostalAddress',
         addressCountry: 'IN',
@@ -113,43 +155,63 @@ const jsonLd = {
       },
       inLanguage: 'en-IN',
     },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'Is Kaarya Made in India?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, Kaarya is 100% designed, engineered, and built in India specifically for Indian precision machine shops, Tier-1/2 automotive component suppliers, and manufacturing MSMEs across hubs like Pune, Rajkot, Bengaluru, and Coimbatore.',
+    ...(canonical === '/' || canonical === '' ? [
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Is Kaarya Made in India?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, Kaarya is 100% designed, engineered, and built in India specifically for Indian precision machine shops, Tier-1/2 automotive component suppliers, and manufacturing MSMEs across hubs like Pune, Rajkot, Bengaluru, and Coimbatore.',
+            },
           },
-        },
-        {
-          '@type': 'Question',
-          name: 'Does Kaarya require an active internet connection or cloud servers?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'No. Kaarya is an air-gap native, local-first system. It runs completely offline on your shopfloor PC or local area network (LAN) using an embedded SQLite engine. No telemetry or production data ever leaves your factory walls.',
+          {
+            '@type': 'Question',
+            name: 'Does Kaarya require an active internet connection or cloud servers?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'No. Kaarya is an air-gap native, local-first system. It runs completely offline on your shopfloor PC or local area network (LAN) using an embedded SQLite engine. No telemetry or production data ever leaves your factory walls.',
+            },
           },
-        },
-        {
-          '@type': 'Question',
-          name: 'What Indian languages does Kaarya support on the shopfloor?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Kaarya operator touchscreens and tablets natively support Hindi, Tamil, Telugu, Kannada, Marathi, and English, including vernacular one-tap downtime logging and voice input.',
+          {
+            '@type': 'Question',
+            name: 'What Indian languages does Kaarya support on the shopfloor?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Kaarya operator touchscreens and tablets natively support Hindi, Tamil, Telugu, Kannada, Marathi, and English, including vernacular one-tap downtime logging and voice input.',
+            },
           },
-        },
-        {
-          '@type': 'Question',
-          name: 'How much does Kaarya cost for Indian MSMEs?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Kaarya Core edition is free forever for up to 2 machines. The Pro Starter edition is aligned to standard Tally software budgets at ₹24,990/year flat for the plant with unlimited operator seats and zero per-user fees.',
+          {
+            '@type': 'Question',
+            name: 'How much does Kaarya cost for Indian MSMEs?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Kaarya Core edition is free forever for up to 2 machines. The Pro Starter edition is aligned to standard Tally software budgets at ₹24,990/year flat for the plant with unlimited operator seats and zero per-user fees.',
+            },
           },
-        },
-      ],
-    },
+        ],
+      },
+    ] : [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: siteUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: title.split('—')[0].trim(),
+            item: canonicalURL,
+          },
+        ],
+      },
+    ]),
   ],
 };
 ---

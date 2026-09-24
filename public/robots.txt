@@ -2,3 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://kaayra.interstellarhq.in/sitemap-index.xml
+
+# Machine-Readable AI Search Endpoints (LLMO / GEO)
+# https://kaayra.interstellarhq.in/llms.txt
+# https://kaayra.interstellarhq.in/ai-manifest.json
