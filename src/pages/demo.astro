@@ -28,9 +28,133 @@ const seoDescription = "Explore the Kaarya Digital Shopfloor Ledger. Interactive
         <a href="/contact" class="btn-primary text-sm px-5 py-2.5">
           Schedule 30-min Live Walkthrough
         </a>
-        <a href="#interactive-demo" class="btn-secondary text-sm px-5 py-2.5">
-          Explore Simulated Screens
+        <a href="#video-tour" class="btn-secondary text-sm px-5 py-2.5 flex items-center gap-2">
+          <span>▶</span> Watch 60s Product Tour
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 60-Second Video Product Tour -->
+  <section id="video-tour" class="section border-b border-outline bg-surface">
+    <div class="container max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+        <div>
+          <div class="font-mono text-xs text-primary font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span>60-Second Executive Tour // Remotion Code-Driven Video</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold font-display text-content">
+            Kaarya Industrial Shell in Action
+          </h2>
+          <p class="text-sm text-content-muted mt-1 max-w-xl leading-relaxed">
+            Watch the complete operational flow: sub-500ms PLC telemetry, vernacular operator downtime interlocks, automated OEE analytics, and IATF 16949 dossiers.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-surface-elevated border border-outline text-xs font-mono text-content-muted">
+            <span class="w-2 h-2 rounded-full bg-secondary"></span> 1080p • 60 FPS
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-surface-elevated border border-outline text-xs font-mono text-secondary">
+            1:00 Runtime
+          </span>
+        </div>
+      </div>
+
+      <!-- Video Player Frame with Foundry Industrial Theme -->
+      <div class="rounded-xl border border-outline bg-surface-elevated overflow-hidden shadow-2xl relative">
+        <!-- Top Tech Status Header -->
+        <div class="flex items-center justify-between px-4 py-2 border-b border-outline bg-surface text-xs font-mono text-content-muted">
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-primary/20 text-primary font-bold text-[10px]">REMOTION KIT</span>
+            <span class="text-content font-bold">KAARYA-SHELL-TOUR.MP4</span>
+          </div>
+          <div class="hidden sm:flex items-center gap-3 text-[11px]">
+            <span>RUNTIME: WAILS v2 + GIN API</span>
+            <span>DB: OFFLINE SQLITE / POSTGRES</span>
+            <span class="text-secondary">● LAN ENGINE ACTIVE</span>
+          </div>
+        </div>
+
+        <!-- HTML5 Video Player -->
+        <div class="relative bg-black aspect-video w-full overflow-hidden">
+          <video
+            id="demo-player"
+            class="w-full h-full object-contain"
+            controls
+            playsinline
+            preload="metadata"
+            poster="/videos/kaarya-demo-poster.webp"
+          >
+            <source src="/videos/kaarya-demo.mp4" type="video/mp4" />
+            <source src="/videos/kaarya-demo.webm" type="video/webm" />
+            Your browser does not support HTML5 video.
+          </video>
+        </div>
+
+        <!-- Interactive Chapter Navigation Bar -->
+        <div class="p-3.5 bg-surface border-t border-outline">
+          <div class="text-[11px] font-mono text-content-muted mb-2 font-bold uppercase tracking-wider flex items-center justify-between">
+            <span>Jump to Module Chapter:</span>
+            <span class="text-primary font-bold" id="chapter-current">00:00 • The Shopfloor Challenge</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+            <button
+              type="button"
+              class="chapter-btn px-2.5 py-2 rounded bg-surface-elevated hover:bg-primary/20 border border-primary text-left text-xs font-mono text-content transition-all"
+              data-time="0"
+              data-title="00:00 • The Shopfloor Challenge"
+            >
+              <div class="text-[10px] text-content-muted">00:00</div>
+              <div class="font-bold truncate">1. Challenge</div>
+            </button>
+            <button
+              type="button"
+              class="chapter-btn px-2.5 py-2 rounded bg-surface-elevated hover:bg-primary/20 border border-outline hover:border-primary text-left text-xs font-mono text-content transition-all"
+              data-time="8"
+              data-title="00:08 • Introducing Kaarya Shell"
+            >
+              <div class="text-[10px] text-primary">00:08</div>
+              <div class="font-bold truncate">2. Kaarya Intro</div>
+            </button>
+            <button
+              type="button"
+              class="chapter-btn px-2.5 py-2 rounded bg-surface-elevated hover:bg-primary/20 border border-outline hover:border-primary text-left text-xs font-mono text-content transition-all"
+              data-time="16"
+              data-title="00:16 • Live CNC Telemetry"
+            >
+              <div class="text-[10px] text-secondary">00:16</div>
+              <div class="font-bold truncate">3. Telemetry</div>
+            </button>
+            <button
+              type="button"
+              class="chapter-btn px-2.5 py-2 rounded bg-surface-elevated hover:bg-primary/20 border border-outline hover:border-primary text-left text-xs font-mono text-content transition-all"
+              data-time="27"
+              data-title="00:27 • Operator Reason Gate"
+            >
+              <div class="text-[10px] text-warning">00:27</div>
+              <div class="font-bold truncate">4. Reason Gate</div>
+            </button>
+            <button
+              type="button"
+              class="chapter-btn px-2.5 py-2 rounded bg-surface-elevated hover:bg-primary/20 border border-outline hover:border-primary text-left text-xs font-mono text-content transition-all"
+              data-time="38"
+              data-title="00:38 • Automated OEE Analytics"
+            >
+              <div class="text-[10px] text-primary">00:38</div>
+              <div class="font-bold truncate">5. OEE Engine</div>
+            </button>
+            <button
+              type="button"
+              class="chapter-btn px-2.5 py-2 rounded bg-surface-elevated hover:bg-primary/20 border border-outline hover:border-primary text-left text-xs font-mono text-content transition-all"
+              data-time="49"
+              data-title="00:49 • MSME Fleet Pricing"
+            >
+              <div class="text-[10px] text-secondary">00:49</div>
+              <div class="font-bold truncate">6. MSME Pricing</div>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -277,4 +401,56 @@ const seoDescription = "Explore the Kaarya Digital Shopfloor Ledger. Interactive
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('demo-player');
+      const buttons = document.querySelectorAll('.chapter-btn');
+      const currentLabel = document.getElementById('chapter-current');
+
+      if (!video) return;
+
+      const chapters = [
+        { time: 0, title: '00:00 • The Shopfloor Challenge' },
+        { time: 8, title: '00:08 • Introducing Kaarya Shell' },
+        { time: 16, title: '00:16 • Live CNC Telemetry' },
+        { time: 27, title: '00:27 • Operator Vernacular Gate' },
+        { time: 38, title: '00:38 • Automated OEE Analytics' },
+        { time: 49, title: '00:49 • MSME Fleet Pricing' }
+      ];
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetTime = parseFloat(btn.getAttribute('data-time') || '0');
+          video.currentTime = targetTime;
+          video.play().catch(() => {});
+        });
+      });
+
+      video.addEventListener('timeupdate', () => {
+        const ct = video.currentTime;
+        let activeIdx = 0;
+        for (let i = chapters.length - 1; i >= 0; i--) {
+          if (ct >= chapters[i].time - 0.25) {
+            activeIdx = i;
+            break;
+          }
+        }
+
+        if (currentLabel && chapters[activeIdx]) {
+          currentLabel.textContent = chapters[activeIdx].title;
+        }
+
+        buttons.forEach((btn, idx) => {
+          if (idx === activeIdx) {
+            btn.classList.add('border-primary', 'bg-primary/20');
+            btn.classList.remove('border-outline', 'bg-surface-elevated');
+          } else {
+            btn.classList.remove('border-primary', 'bg-primary/20');
+            btn.classList.add('border-outline', 'bg-surface-elevated');
+          }
+        });
+      });
+    });
+  </script>
 </BaseLayout>
