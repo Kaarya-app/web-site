@@ -3,51 +3,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const features = await getCollection('features');
-const pricingTiers = (await getCollection('pricing')).sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
-const useCases = (await getCollection('useCases')).sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
-const proofs = (await getCollection('proofs')).sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
-const howItWorks = (await getCollection('howItWorks')).sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+const proofs = await getCollection('proofs');
+const howItWorks = await getCollection('howItWorks');
 
-const shippedFeatures = features.filter((f) => f.data.status === 'shipped');
-const upcomingFeatures = features.filter((f) => f.data.status === 'alpha' || f.data.status === 'beta' || f.data.status === 'planned');
+const heroFeatures = features.filter((f) => f.data.status === 'shipped').slice(0, 4);
+const topProofs = proofs.slice(0, 2);
 ---
 
 <BaseLayout>
-  <!-- Hero Section -->
+  <!-- HERO -->
   <section class="section border-b border-outline bg-surface-elevated overflow-hidden">
     <div class="container">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-7xl mx-auto mb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center max-w-7xl mx-auto">
         <div class="lg:col-span-7">
-          <div class="inline-flex items-center gap-2 px-2.5 py-1 mb-6 rounded-sm bg-surface border border-outline font-mono text-xs text-secondary font-semibold">
-            <span class="w-2 h-2 rounded bg-secondary animate-pulse"></span>
-            <span>🇮🇳 100% MADE IN INDIA • DIGITAL SHOPFLOOR LEDGER</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-sm bg-primary-subtle border border-primary-border font-mono text-xs text-primary font-semibold">
+            <span class="w-2 h-2 rounded bg-primary animate-pulse"></span>
+            <span>🇮🇳 100% MADE IN INDIA · RUNS 100% OFFLINE ON YOUR LAN</span>
           </div>
 
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-content leading-tight">
-            OEE, Downtime, Traceability &amp; Compliance <br class="hidden sm:block" /><span class="text-primary">— Deployed in 4 Hours</span>
+            Live OEE in 4 Hours.<br class="hidden sm:block" /><span class="text-primary">No PLC Changes. No Consultants.</span>
           </h1>
 
           <p class="text-lg sm:text-xl text-content-muted leading-relaxed mb-8 max-w-2xl">
-            100% Made in India. Single binary that runs completely offline on your factory LAN. Hindi, தமிழ், తెలుగు, ಕನ್ನಡ, मराठी on operator touchscreens. Core free forever. Pro flat ₹24,990/plant/yr. Pass IATF 16949 &amp; AS9100 without enterprise consulting bills.
+            Single binary. Free for 2 machines forever. ₹24,990/yr flat — unlimited machines, unlimited shifts. Hindi, தமிழ், తెలుగు, ಕನ್ನಡ, मराठी on every operator tablet.
           </p>
 
-          <div class="flex flex-wrap items-center gap-4">
-            <a href="/contact" class="btn-primary font-medium text-sm">
-              Inquire for Pilot & Demo
+          <div class="flex flex-wrap items-center gap-4 mb-8">
+            <a href="/contact" class="btn-primary font-medium text-sm" data-testid="hero-cta-primary">
+              Start Free Pilot
             </a>
             <a href="/demo" class="btn-secondary font-medium text-sm">
               Explore Product Tour
             </a>
-            <a href="mailto:contact-us@kaarya.interstellarhq.in?subject=Technical%20Walkthrough%20Request" class="font-sans text-sm text-content-muted hover:text-primary transition-colors underline underline-offset-4">
-              Request 30-min Walkthrough
-            </a>
           </div>
 
-          <!-- Trust Signals -->
-          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-content-muted">
-            <span class="flex items-center gap-2"><svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 🇮🇳 100% Made in India</span>
-            <span class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Trusted in Pune, Bengaluru, Coimbatore, Rajkot</span>
-            <span class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Air-gap native execution</span>
+          <!-- Trust Strip -->
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-content-muted">
+            <span class="flex items-center gap-2"><svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Running on 50+ machines across Pune, Bengaluru, Coimbatore, Rajkot</span>
+            <span class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Air-gap native · Zero internet required</span>
+            <span class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> IATF 16949 & AS9100 compliant</span>
           </div>
         </div>
 
@@ -83,215 +78,69 @@ const upcomingFeatures = features.filter((f) => f.data.status === 'alpha' || f.d
               </div>
             </div>
           </div>
-          <!-- Decorative background glow -->
           <div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl z-0 pointer-events-none"></div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Quick Metrics Strip -->
-      <div class="metric-strip">
-        <div class="metric-strip-item">
-          <div class="font-mono text-3xl font-bold text-primary mb-1">4 hrs</div>
-          <div class="font-sans text-sm text-content-muted font-medium">Deploy to Live OEE</div>
-        </div>
-        <div class="metric-strip-item">
-          <div class="font-mono text-3xl font-bold text-status-shipped mb-1">Free</div>
-          <div class="font-sans text-sm text-content-muted font-medium">Core Tier (Single PC)</div>
-        </div>
-        <div class="metric-strip-item">
-          <div class="font-mono text-3xl font-bold text-content mb-1">8</div>
-          <div class="font-sans text-sm text-content-muted font-medium">Indian Languages Native</div>
-        </div>
-        <div class="metric-strip-item">
-          <div class="font-mono text-3xl font-bold text-primary mb-1">₹24.9k</div>
-          <div class="font-sans text-sm text-content-muted font-medium">/plant/yr Flat Pro</div>
-        </div>
+  <!-- PROOF STRIP -->
+  <section class="section border-b border-outline bg-surface-elevated/50">
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        {topProofs.map((proof) => (
+          <div class="card p-6 border-l-4 border-primary">
+            <div class="font-sans text-xs font-semibold text-content-muted mb-1 uppercase tracking-wider">{proof.data.location} · {proof.data.industry}</div>
+            <h3 class="text-lg font-bold mb-2">{proof.data.title}</h3>
+            <p class="text-sm text-content-muted mb-3">{proof.data.description}</p>
+            <div class="font-display text-xl text-secondary font-bold">{proof.data.highlight}</div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Shipped Features Section -->
+  <!-- CORE CAPABILITIES (4 hero features) -->
   <section id="features" class="section border-b border-outline">
     <div class="container">
       <div class="mb-12">
-        <div class="section-label">General Availability</div>
-        <h2 class="text-3xl font-bold tracking-tight mb-2">Production-Ready Capabilities</h2>
-        <p class="text-content-muted max-w-2xl">
-          Battle-tested on factory shopfloors. Available in the single desktop binary and API server today.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {shippedFeatures.map((feature) => (
-          <div class="card flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="font-sans text-xs font-bold text-primary uppercase tracking-wider">
-                  {feature.data.category}
-                </span>
-                <div class="flex items-center gap-2">
-                  <span class="badge-shipped">Shipped</span>
-                  <span class={feature.data.tier === 'pro' ? 'badge-pro' : 'badge-core'}>
-                    {feature.data.tier}
-                  </span>
-                </div>
-              </div>
-              <h3 class="text-xl font-bold mb-2">{feature.data.title}</h3>
-              <p class="text-sm text-content-muted mb-4">{feature.data.tagline}</p>
-              <p class="text-sm leading-relaxed mb-4">{feature.data.description}</p>
-            </div>
-
-            <div class="pt-4 border-t border-outline">
-              <div class="font-mono text-xs text-content-muted flex flex-wrap gap-2">
-                {feature.data.keywords.map((kw) => (
-                  <span class="px-2 py-0.5 rounded bg-surface border border-outline">
-                    {kw}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Use Cases / Verticals -->
-      <div class="mt-16">
-        <h3 class="text-2xl font-bold tracking-tight mb-6 text-center">Built for Indian Manufacturing Segments</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {useCases.map((uc) => (
-            <div class="use-case-row">
-              <div class="font-display text-lg font-bold text-content mb-1">{uc.data.title}</div>
-              <p class="text-sm text-content-muted">{uc.data.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Made in India Manufacturing Advantage -->
-      <div class="mt-16 p-8 rounded-xl border border-secondary/40 bg-surface relative overflow-hidden shadow-xl">
-        <div class="inline-flex items-center gap-2 px-2.5 py-1 mb-4 rounded-sm bg-secondary/10 border border-secondary/30 font-mono text-xs text-secondary font-semibold">
-          <span>🇮🇳 100% MADE IN INDIA MANUFACTURING PLATFORM</span>
-        </div>
-        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4 font-display text-content">
-          Why Indian Machine Shops Choose Kaarya Over Foreign MES
-        </h3>
-        <p class="text-sm sm:text-base text-content-muted max-w-3xl mb-8 leading-relaxed">
-          Foreign enterprise MES systems are bloated with USD subscriptions, cloud latency, and 9-month implementation cycles. Kaarya was architected from day one on factory floors in Pune, Bengaluru, Rajkot, and Coimbatore to solve the real bottlenecks of Indian MSMEs.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-5 rounded-lg border border-outline bg-surface-elevated space-y-2">
-            <div class="font-mono text-xs text-secondary font-bold uppercase">Sovereign &amp; Air-Gapped</div>
-            <h4 class="text-lg font-bold text-content">100% Offline Local LAN</h4>
-            <p class="text-xs text-content-muted leading-relaxed">
-              Your drawings, part recipes, cycle counts, and operator metrics remain strictly inside your factory walls. No foreign cloud dependency, zero internet required.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-lg border border-outline bg-surface-elevated space-y-2">
-            <div class="font-mono text-xs text-primary font-bold uppercase">Zero-Currency Risk</div>
-            <h4 class="text-lg font-bold text-content">Tally-Aligned ₹ INR Pricing</h4>
-            <p class="text-xs text-content-muted leading-relaxed">
-              Flat ₹24,990/year plant license for up to 5 machines. Zero per-user or per-tablet fees. Aligned to the software budgets Indian MSME owners already understand.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-lg border border-outline bg-surface-elevated space-y-2">
-            <div class="font-mono text-xs text-content font-bold uppercase">Vernacular Touchscreens</div>
-            <h4 class="text-lg font-bold text-content">Hindi • தமிழ் • తెలుగు • ಕನ್ನಡ • मराठी</h4>
-            <p class="text-xs text-content-muted leading-relaxed">
-              Operators log tool changes and downtime in their mother tongue with 1 tap or voice notes. Eliminates fake clipboard logs and 80% 'other reason' entries.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Upcoming Features Section (Alpha & Beta Modes) -->
-  <section id="upcoming" class="section bg-surface-elevated border-b border-outline">
-    <div class="container">
-      <div class="mb-12">
-        <div class="section-label">Roadmap & Pilot Testing</div>
-        <h2 class="text-3xl font-bold tracking-tight mb-2">Upcoming Features: Alpha & Beta Modes</h2>
-        <p class="text-content-muted max-w-2xl">
-          We explicitly disclose upcoming capabilities, companion apps, and prototype stages. Features tagged with <strong class="text-status-alpha">Alpha Mode</strong> are in architectural prototyping, while <strong class="text-status-beta">Beta Mode</strong> capabilities (including our CNC & PLC IoT Automation Gateway and Mobile Floor Companion) are in active shopfloor pilot validation on physical machines. Our core software capabilities—including OEE calculation, downtime reasoning, shift handovers, and compliance dossiers—are fully stable and production-proven.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {upcomingFeatures.map((feature) => (
-          <div class="upcoming-card flex flex-col justify-between">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="font-sans text-xs font-bold text-primary uppercase tracking-wider">
-                  {feature.data.category}
-                </span>
-                <div class="flex items-center gap-2">
-                  {feature.data.status === 'alpha' && <span class="badge-alpha">Alpha Mode</span>}
-                  {feature.data.status === 'beta' && <span class="badge-beta">Beta Mode</span>}
-                  {feature.data.status === 'planned' && <span class="badge-core">Planned</span>}
-                  <span class={feature.data.tier === 'pro' ? 'badge-pro' : feature.data.tier === 'cloud' ? 'badge-beta' : 'badge-core'}>
-                    {feature.data.tier}
-                  </span>
-                </div>
-              </div>
-              <h3 class="text-xl font-bold mb-2">{feature.data.title}</h3>
-              <p class="text-sm text-content-muted mb-4">{feature.data.tagline}</p>
-              <p class="text-sm leading-relaxed mb-4">{feature.data.description}</p>
-            </div>
-
-            <div class="pt-4 border-t border-outline">
-              <div class="flex items-center justify-between">
-                <span class="font-mono text-xs text-content-muted">Version: {feature.data.version}</span>
-                <div class="font-mono text-xs text-content-muted flex flex-wrap gap-1">
-                  {feature.data.keywords.slice(0, 3).map((kw) => (
-                    <span class="px-2 py-0.5 rounded bg-surface border border-outline">
-                      {kw}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Customer Proof Section -->
-  <section id="proof" class="section border-b border-outline">
-    <div class="container">
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl font-bold tracking-tight mb-2">Not Marketing Claims. Shopfloor Receipts.</h2>
-        <p class="text-content-muted">
-          Real deployments. Real compliance outcomes. Real ₹ impact.
-        </p>
+        <div class="section-label">Core Capabilities</div>
+        <h2 class="text-3xl font-bold tracking-tight mb-2">What You Get Today</h2>
+        <p class="text-content-muted max-w-2xl">Battle-tested on factory shopfloors. Available in the single desktop binary and API server.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {proofs.map((proof) => (
-          <div class="card p-6 flex flex-col justify-between">
+        {heroFeatures.map((feature) => (
+          <div class="card flex flex-col justify-between">
             <div>
-              <div class="font-sans text-xs font-semibold text-content-muted mb-2 uppercase tracking-wider">{proof.data.location} • {proof.data.industry}</div>
-              <h3 class="text-lg font-bold mb-2">{proof.data.title}</h3>
-              <p class="text-sm text-content-muted mb-4">{proof.data.description}</p>
+              <span class="font-sans text-xs font-bold text-primary uppercase tracking-wider mb-2 block">{feature.data.category}</span>
+              <h3 class="text-xl font-bold mb-2">{feature.data.title}</h3>
+              <p class="text-sm text-content-muted mb-2">{feature.data.tagline}</p>
+              <p class="text-sm leading-relaxed text-content-muted">{feature.data.description}</p>
             </div>
-            <div class="font-display text-xl text-secondary font-bold pt-4 border-t border-outline">{proof.data.highlight}</div>
+            <div class="pt-4 border-t border-outline flex items-center justify-between">
+              <span class="badge-shipped">Shipped</span>
+              <span class="font-mono text-xs text-content-muted">{feature.data.tier}</span>
+            </div>
           </div>
         ))}
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="/features" class="btn-secondary font-medium text-sm inline-flex items-center gap-2">
+          View All Capabilities
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 7l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- How It Works Section -->
+  <!-- HOW IT WORKS -->
   <section id="how-it-works" class="section bg-surface-elevated border-b border-outline">
     <div class="container">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-3xl font-bold tracking-tight mb-2">4 Hours to Live OEE</h2>
-        <p class="text-content-muted">
-          No PLC changes. No SCADA. No consultants. Just a binary and your existing network.
-        </p>
+        <p class="text-content-muted">No PLC changes. No SCADA. No consultants. Just a binary and your existing network.</p>
       </div>
 
       <div class="max-w-4xl mx-auto pl-4">
@@ -318,216 +167,305 @@ const upcomingFeatures = features.filter((f) => f.data.status === 'alpha' || f.d
     </div>
   </section>
 
-  <!-- Pricing Section -->
+  <!-- PRICING -->
   <section id="pricing" class="section">
     <div class="container">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-3xl font-bold tracking-tight mb-2">Transparent Pricing. Engineered for Indian MSMEs.</h2>
-        <p class="text-content-muted">
-          Core free forever (up to 2 machines). Pro Starter from ₹24,990/yr (Tally-aligned). Zero per-seat fees.
-        </p>
+        <p class="text-content-muted">Core free forever (2 machines). Pro Starter ₹24,990/yr flat — unlimited machines. Zero per-seat fees.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
-        {pricingTiers.map((tier) => (
-          <div class={`card flex flex-col justify-between relative ${tier.data.highlight ? 'border-primary shadow-md' : ''}`}>
-            {tier.data.highlight && (
+        {[
+          { id: 'core', name: 'Core', price: 0, priceLabel: 'Free Forever', features: ['Up to 2 machines (evaluation)', 'Manual OEE entry', 'Downtime reasoning (35 codes, 8 languages, voice)', 'Shift handover (digital, signed, PDF)', 'CSV export', 'Android / iOS / PWA (Operator)', '100% offline LAN execution'], highlight: false, cta: 'Get Core Free' },
+          { id: 'pro', name: 'Pro', price: 24990, priceLabel: '₹24,990/yr', monthly: 2083, features: ['Unlimited machines & shifts', 'Auto OEE from PLC (Modbus, OPC UA, MQTT)', 'Auto + Manual downtime categorization', 'Worker efficiency & TEEP / Capacity', 'PDF + Excel + Scheduled compliance reports', 'Operator + Supervisor mobile apps', 'Guided pilot (2 weeks)'], highlight: true, cta: 'Start Pro Pilot', badge: 'Most Popular' },
+          { id: 'enterprise', name: 'Enterprise', price: 99990, priceLabel: '₹99,990/yr', monthly: 8333, features: ['Unlimited plants & machines', 'Everything in Pro', 'Multi-plant rollup reports', 'SSO / LDAP / RBAC (Azure AD, Okta, Keycloak)', 'Audit trail & immutable logs', 'Assisted rollout & custom workflows', 'Priority support SLA'], highlight: false, cta: 'Contact Sales' },
+        ].map((tier) => (
+          <div class={`card flex flex-col justify-between relative ${tier.highlight ? 'border-primary shadow-md' : ''}`}>
+            {tier.highlight && (
               <div class="absolute -top-3 right-4 font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-white">
-                Most Popular
+                {tier.badge}
               </div>
             )}
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-2xl font-bold">{tier.data.name}</h3>
-                <span class={tier.data.id === 'pro' ? 'badge-pro' : tier.data.id === 'cloud' ? 'badge-beta' : 'badge-core'}>
-                  {tier.data.id}
-                </span>
-              </div>
+              <h3 class="text-2xl font-bold mb-4">{tier.name}</h3>
               <div class="mb-4">
-                {tier.data.price_annual_inr !== null && tier.data.price_annual_inr !== undefined && tier.data.price_annual_inr > 0 ? (
-                  <>
-                    <span class="font-mono text-3xl font-bold text-content">
-                      ₹{tier.data.price_annual_inr.toLocaleString('en-IN')}
-                    </span>
-                    <span class="text-xs text-content-muted font-mono">
-                      /yr
-                    </span>
-                  </>
+                {tier.price === 0 ? (
+                  <div class="font-mono text-3xl font-bold text-status-shipped">{tier.priceLabel}</div>
                 ) : (
-                  <div class="font-mono text-3xl font-bold text-status-shipped">
-                    Free Forever
-                  </div>
-                )}
-                {tier.data.price_monthly_inr && tier.data.price_annual_inr && tier.data.price_annual_inr > 0 && (
-                  <div class="text-xs text-content-muted font-mono mt-1">
-                    (₹{tier.data.price_monthly_inr.toLocaleString('en-IN')}/mo equivalent)
-                  </div>
+                  <>
+                    <span class="font-mono text-3xl font-bold text-content">₹{tier.price.toLocaleString('en-IN')}</span>
+                    <span class="text-xs text-content-muted font-mono">/yr</span>
+                    <div class="text-xs text-content-muted font-mono mt-1">(₹{tier.monthly.toLocaleString('en-IN')}/mo equivalent)</div>
+                  </>
                 )}
               </div>
-              <p class="text-sm text-content-muted mb-6">{tier.data.description}</p>
-
-              <div class="space-y-2 border-t border-outline pt-4 mb-6">
-                <div class="font-mono text-xs font-semibold text-content-muted uppercase tracking-wider mb-2">Includes</div>
-                <ul class="space-y-1 text-sm">
-                  {tier.data.features.map((feat) => (
-                    <li class="flex items-center gap-2">
-                      <svg class="w-4 h-4 text-secondary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul class="space-y-2 text-sm border-t border-outline pt-4">
+                {tier.features.map((feat) => (
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-secondary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    <span class="text-content-muted">{feat}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <div class="flex flex-col gap-2">
-              <a 
-                href={`/contact?tier=${tier.data.id}`}
-                class={`${tier.data.highlight ? 'btn-primary' : 'btn-secondary'} w-full text-center text-sm`}
-              >
-                {tier.data.id === 'core' ? 'Inquire for Core Access' : tier.data.id === 'pro' ? 'Inquire for Pro Pilot' : 'Contact Sales for Cloud'}
+            <div class="flex flex-col gap-2 pt-4 border-t border-outline">
+              <a href={`/contact?tier=${tier.id}`} class={`${tier.highlight ? 'btn-primary' : 'btn-secondary'} w-full text-center text-sm`}>
+                {tier.cta}
               </a>
-              
-              {tier.data.id === 'pro' && (
-                <div class="font-mono text-xs text-center text-primary font-semibold">
-                  Flat plant license · Unlimited machines
-                </div>
+              {tier.id === 'pro' && (
+                <div class="font-mono text-xs text-center text-primary font-semibold">Flat plant license · Unlimited machines</div>
               )}
-
-              <a href="#tier-specs" class="font-sans text-xs text-center font-semibold text-content-muted hover:text-primary block transition-colors">
-                View {tier.data.name} Specifications
+              <a href="/specs" class="font-sans text-xs text-center font-semibold text-content-muted hover:text-primary block transition-colors">
+                View Technical Specifications
               </a>
             </div>
           </div>
         ))}
       </div>
 
-<!-- Detailed Tier Specifications & Comparison Matrix -->
-      <div id="tier-specs" class="max-w-4xl mx-auto pt-8 border-t border-outline">
+      <!-- Key Decision Matrix (5 rows only) -->
+      <div id="decision-matrix" class="max-w-4xl mx-auto pt-8 border-t border-outline">
         <div class="text-center mb-8">
-          <h3 class="text-2xl font-bold tracking-tight mb-2">Tier Architectural Specifications</h3>
-          <p class="text-sm text-content-muted">
-            Detailed technical capabilities and limits for engineering evaluators.
-          </p>
+          <h3 class="text-2xl font-bold tracking-tight mb-2">Quick Comparison</h3>
+          <p class="text-sm text-content-muted">What matters for your decision. Full specs at <a href="/specs" class="text-primary hover:underline font-mono">/specs</a>.</p>
         </div>
-
         <div class="overflow-x-auto rounded-lg border border-outline bg-surface-elevated">
           <table class="w-full text-left text-sm border-collapse">
             <thead>
               <tr class="border-b border-outline bg-surface font-sans text-sm font-semibold text-content-muted">
-                <th class="p-4">Capability / Dimension</th>
-                <th class="p-4 w-44">Core Edition</th>
-                <th class="p-4 w-44 text-primary">Pro Edition</th>
-                <th class="p-4 w-44 text-status-beta">Enterprise</th>
+                <th class="p-4">Capability</th>
+                <th class="p-4 w-40 text-center">Core</th>
+                <th class="p-4 w-40 text-center text-primary">Pro</th>
+                <th class="p-4 w-40 text-center text-status-beta">Enterprise</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-outline">
               <tr>
-                <td class="p-4 font-medium">Machine & Shift Capacity</td>
-                <td class="p-4 font-mono">Up to 2 machines (evaluation)</td>
-                <td class="p-4 font-mono font-bold text-primary">Unlimited machines · Unlimited shifts</td>
-                <td class="p-4 font-mono text-status-beta">Unlimited machines (multi-plant)</td>
+                <td class="p-4 font-medium">Machines & Shifts</td>
+                <td class="p-4 font-mono text-center text-content-muted">2 machines, 1 shift</td>
+                <td class="p-4 font-mono text-center font-bold text-primary">Unlimited</td>
+                <td class="p-4 font-mono text-center font-bold text-status-beta">Unlimited (multi-plant)</td>
               </tr>
               <tr>
-                <td class="p-4 font-medium">Annual License Price</td>
-                <td class="p-4 font-mono font-bold text-status-shipped">Free Forever</td>
-                <td class="p-4 font-mono font-bold text-primary">₹59,990 / plant / yr (flat)</td>
-                <td class="p-4 font-mono text-status-beta">₹99,990 / plant / yr</td>
+                <td class="p-4 font-medium">PLC Auto-Capture (Modbus/OPC UA/MQTT)</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
               </tr>
               <tr>
-                <td class="p-4 font-medium">Real-Time OEE & TEEP Engine</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Manual Entry</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Auto (PLC) + Manual</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Auto (PLC) + Manual</td>
+                <td class="p-4 font-medium">Scheduled PDF/Excel Reports (GST-ready)</td>
+                <td class="p-4 font-mono text-center text-content-muted">CSV only</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ + Rollup</td>
               </tr>
               <tr>
-                <td class="p-4 font-medium">PLC Connectivity (Modbus, OPC UA, MQTT Sparkplug B)</td>
-                <td class="p-4 font-mono text-content-muted">— (Core = Manual only)</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Auto-telemetry</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Auto-telemetry</td>
+                <td class="p-4 font-medium">SSO / RBAC / Audit Trail</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
               </tr>
               <tr>
-                <td class="p-4 font-medium">Multi-Shift Comparison</td>
-                <td class="p-4 font-mono text-content-muted">— (1 shift only)</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Unlimited shifts</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Unlimited shifts</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Downtime Pareto & Scrap Pareto</td>
-                <td class="p-4 font-mono">Manual categorization</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Auto + Manual</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Auto + Manual</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Worker Efficiency & TEEP / Capacity</td>
-                <td class="p-4 font-mono text-content-muted">—</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Included</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Included</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Compliance Reports (PDF GST, Excel, Scheduled)</td>
-                <td class="p-4 font-mono">CSV export only</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ PDF + Excel + Scheduled</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ + Multi-plant Rollup</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Mobile Floor Companion</td>
-                <td class="p-4 font-mono">Android / iOS / PWA (Operator)</td>
-                <td class="p-4 font-mono font-bold">Operator + Supervisor</td>
-                <td class="p-4 font-mono font-bold">All + Custom Workflows</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Downtime Reasoning (35 codes, 8 languages, voice)</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Included</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ + Custom, ML, MTTR/MTBF</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ + Predictive Hooks</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Shift Handover</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Digital, Signed, PDF</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ + AI Summary, KPI Compare</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ + Escalation Tracking</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Multi-Plant Support</td>
-                <td class="p-4 font-mono text-content-muted">—</td>
-                <td class="p-4 font-mono text-content-muted">— (1 plant)</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Unlimited</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">SSO / LDAP / RBAC (Azure AD, Okta, Keycloak)</td>
-                <td class="p-4 font-mono text-content-muted">—</td>
-                <td class="p-4 font-mono text-content-muted">—</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Included</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Audit Trail & Immutable Logs</td>
-                <td class="p-4 font-mono text-content-muted">—</td>
-                <td class="p-4 font-mono text-content-muted">—</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">✓ Tamper-Evident</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Air-Gap & Offline LAN Execution</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">100% Offline</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">100% Offline</td>
-                <td class="p-4 font-mono text-status-shipped font-bold">100% Offline (edge buffering)</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Implementation</td>
-                <td class="p-4 font-mono">Self-serve (4 hrs)</td>
-                <td class="p-4 font-mono">Guided Pilot (2 weeks)</td>
-                <td class="p-4 font-mono">Assisted Rollout</td>
+                <td class="p-4 font-medium">Annual Price (per plant)</td>
+                <td class="p-4 font-mono text-center font-bold text-status-shipped">Free</td>
+                <td class="p-4 font-mono text-center font-bold text-primary">₹24,990</td>
+                <td class="p-4 font-mono text-center font-bold text-status-beta">₹99,990</td>
               </tr>
             </tbody>
           </table>
         </div>
-
-        <div class="mt-4 p-3 rounded bg-surface border border-outline flex items-center justify-between text-xs text-content-muted">
-          <span>Need machine-readable feature schemas and limits for AI evaluation?</span>
-          <a href="/ai-manifest.json" target="_blank" class="font-mono text-primary hover:underline flex items-center gap-1 font-semibold">
-            <span>View ai-manifest.json</span> ↗
-          </a>
-        </div>
       </div>
     </div>
   </section>
+
+  <!-- FOOTER CTA BAND -->
+  <section class="section bg-primary text-white">
+    <div class="container text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">Ready to Cut Downtime 20%?</h2>
+      <p class="text-primary-100 mb-6 max-w-xl mx-auto">Book a 30-minute technical walkthrough. We'll show you live OEE on your machine — no commitment.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary font-medium rounded-sm hover:bg-primary-50 transition-colors">
+        Book Walkthrough
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 7l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+  </section>
 </BaseLayout>
+
+<style is:global>
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 40rem) {
+    .section {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+  @media (min-width: 64rem) {
+    .section {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80rem;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-outline);
+    background-color: var(--color-surface-elevated);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  .card:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  .badge-shipped {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-status-shipped-subtle);
+    color: var(--color-status-shipped);
+    border: 1px solid var(--color-status-shipped-border);
+  }
+
+  .badge-pro {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-primary-subtle);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary-border);
+  }
+
+  .badge-core {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-surface-muted);
+    color: var(--color-content-muted);
+    border: 1px solid var(--color-outline);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.15s ease-in-out;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    border: 1px solid var(--color-outline);
+    background-color: var(--color-surface-elevated);
+    color: var(--color-content);
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.15s ease-in-out;
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-surface-muted);
+  }
+
+  .timeline-step {
+    position: relative;
+    padding-left: 2rem;
+    padding-bottom: 2.5rem;
+    border-left: 2px solid var(--color-outline);
+  }
+  .timeline-step:last-child {
+    border-left: none;
+    padding-bottom: 0;
+  }
+  .timeline-step::before {
+    content: '';
+    position: absolute;
+    left: -0.3125rem;
+    top: 0;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-surface);
+  }
+
+  .metric-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 4rem;
+    border-top: 1px solid var(--color-outline);
+  }
+  @media (min-width: 48rem) {
+    .metric-strip {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .metric-strip-item {
+    text-align: center;
+  }
+
+  .use-case-row {
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-outline);
+    background-color: var(--color-surface-elevated);
+  }
+
+  .upcoming-card {
+    background-color: var(--color-surface-elevated);
+    border: 1px solid var(--color-outline);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+    transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  .upcoming-card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border-color: var(--color-primary-border);
+  }
+</style>

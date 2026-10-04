@@ -1,30 +1,22 @@
-// Server-side Matomo utilities (uses process.env for Node/SSR)
-// Client-side tracking moved to matomo-client.ts (uses import.meta.env.PUBLIC_*)
+// Client-side Matomo analytics for Astro
+// Vite processes this module, replacing import.meta.env.PUBLIC_*
 
-function initMatomo() {
-  const matomoUrl = process.env.NUXT_PUBLIC_MATOMO_URL;
-  const matomoSiteId = process.env.NUXT_PUBLIC_MATOMO_SITE_ID;
-  
+function initMatomo(): void {
+  const matomoUrl = (import.meta.env.PUBLIC_MATOMO_URL || '').replace(/\/+$/, '') + '/';
+  const matomoSiteId = import.meta.env.PUBLIC_MATOMO_SITE_ID || '';
+
   if (!matomoUrl || !matomoSiteId) {
-    console.log('Matomo not configured');
+    console.log('Matomo analytics not configured for Astro site');
     return;
   }
-  
-  // Initialize the _paq array
-  // @ts-ignore
+
   window._paq = window._paq || [];
-  
-  // Matomo configuration
-  // @ts-ignore
+
   window._paq.push(['setTrackerUrl', `${matomoUrl}matomo.php`]);
-  // @ts-ignore
   window._paq.push(['setSiteId', matomoSiteId]);
-  // @ts-ignore
   window._paq.push(['trackPageView']);
-  // @ts-ignore
   window._paq.push(['enableLinkTracking']);
-  
-  // Load Matomo script
+
   const script = document.createElement('script');
   script.innerHTML = `
     var u = '${matomoUrl}';
@@ -45,34 +37,24 @@ function initMatomo() {
   `;
   script.type = 'text/javascript';
   script.async = true;
-  
-  // Add script to document
   document.head.appendChild(script);
 }
 
-// Initialize Matomo when the DOM is ready
+function trackPathChange(): void {
+  const matomoUrl = (import.meta.env.PUBLIC_MATOMO_URL || '').replace(/\/+$/, '') + '/';
+  const matomoSiteId = import.meta.env.PUBLIC_MATOMO_SITE_ID || '';
+
+  if (!matomoUrl || !matomoSiteId || !window._paq) return;
+
+  window._paq.push(['setCustomUrl', `${matomoUrl}${window.location.pathname}${window.location.search}`]);
+  window._paq.push(['trackPageView']);
+}
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initMatomo);
 } else {
   initMatomo();
 }
 
-// Track page changes for client-side navigation
-function trackPathChange() {
-  const matomoUrl = process.env.NUXT_PUBLIC_MATOMO_URL;
-  const matomoSiteId = process.env.NUXT_PUBLIC_MATOMO_SITE_ID;
-  
-  if (!matomoUrl || !matomoSiteId || !window._paq) return;
-  
-  // Track the new page
-  // @ts-ignore
-  window._paq.push(['setCustomUrl', `${matomoUrl}${window.location.pathname}${window.location.search}`]);
-  // @ts-ignore
-  window._paq.push(['trackPageView']);
-}
-
-// Listen for hash changes (used by Astro's router)
 window.addEventListener('hashchange', trackPathChange);
-
-// Listen for popstate events (back/forward navigation)
 window.addEventListener('popstate', trackPathChange);

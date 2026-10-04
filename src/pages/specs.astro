@@ -1,0 +1,346 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <section class="section border-b border-outline">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <a href="/" class="inline-flex items-center gap-2 text-sm text-content-muted hover:text-primary mb-8">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Back to Home
+        </a>
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-content">Technical Specifications</h1>
+        <p class="text-lg text-content-muted">Complete architectural capabilities and limits for engineering evaluators and procurement.</p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <!-- Tier Overview Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div class="card p-6 border-l-4 border-status-shipped">
+            <h3 class="text-lg font-bold mb-2">Core Edition</h3>
+            <div class="font-mono text-3xl font-bold text-status-shipped mb-2">Free Forever</div>
+            <p class="text-sm text-content-muted mb-4">Evaluation tier for single workstation. Manual entry only.</p>
+            <ul class="space-y-1 text-sm text-content-muted">
+              <li>• Up to 2 machines, 1 shift</li>
+              <li>• Manual OEE entry</li>
+              <li>• CSV export only</li>
+              <li>• 100% offline LAN</li>
+            </ul>
+          </div>
+          <div class="card p-6 border-l-4 border-primary relative">
+            <div class="absolute -top-3 right-4 font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-white">Most Popular</div>
+            <h3 class="text-lg font-bold mb-2">Pro Edition</h3>
+            <div class="font-mono text-3xl font-bold text-primary mb-2">₹24,990/yr</div>
+            <p class="text-sm text-content-muted mb-4">Production tier for single plant. Flat license — unlimited machines.</p>
+            <ul class="space-y-1 text-sm text-content-muted">
+              <li>• Unlimited machines & shifts</li>
+              <li>• PLC auto-capture (Modbus/OPC UA/MQTT)</li>
+              <li>• PDF + Excel + Scheduled reports</li>
+              <li>• Worker efficiency & TEEP</li>
+            </ul>
+          </div>
+          <div class="card p-6 border-l-4 border-status-beta">
+            <h3 class="text-lg font-bold mb-2">Enterprise Edition</h3>
+            <div class="font-mono text-3xl font-bold text-status-beta mb-2">₹99,990/yr</div>
+            <p class="text-sm text-content-muted mb-4">Multi-plant tier with governance, SSO, and audit trails.</p>
+            <ul class="space-y-1 text-sm text-content-muted">
+              <li>• Unlimited plants & machines</li>
+              <li>• SSO / LDAP / RBAC</li>
+              <li>• Audit trail & immutable logs</li>
+              <li>• Multi-plant rollup reports</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Full Comparison Table -->
+        <div class="overflow-x-auto rounded-lg border border-outline bg-surface-elevated">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-outline bg-surface font-sans text-sm font-semibold text-content-muted">
+                <th class="p-4 w-64">Capability / Dimension</th>
+                <th class="p-4 w-44 text-center">Core Edition</th>
+                <th class="p-4 w-44 text-center text-primary">Pro Edition</th>
+                <th class="p-4 w-44 text-center text-status-beta">Enterprise Edition</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-outline">
+              <!-- Capacity -->
+              <tr class="bg-primary-subtle/30">
+                <td class="p-4 font-semibold text-primary" colspan="4">CAPACITY & SCALE</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Machine & Shift Capacity</td>
+                <td class="p-4 font-mono text-center text-content-muted">Up to 2 machines (evaluation)</td>
+                <td class="p-4 font-mono text-center font-bold text-primary">Unlimited machines · Unlimited shifts</td>
+                <td class="p-4 font-mono text-center font-bold text-status-beta">Unlimited machines (multi-plant)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Plant Count</td>
+                <td class="p-4 font-mono text-center text-content-muted">1 (single PC)</td>
+                <td class="p-4 font-mono text-center text-content-muted">1 plant</td>
+                <td class="p-4 font-mono text-center font-bold text-status-beta">Unlimited</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Concurrent Operator Sessions</td>
+                <td class="p-4 font-mono text-center text-content-muted">5</td>
+                <td class="p-4 font-mono text-center font-bold text-primary">Unlimited</td>
+                <td class="p-4 font-mono text-center font-bold text-status-beta">Unlimited</td>
+              </tr>
+
+              <!-- OEE & Metrics -->
+              <tr class="bg-primary-subtle/30">
+                <td class="p-4 font-semibold text-primary" colspan="4">OEE, TEEP & PRODUCTIVITY ENGINE</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Real-Time OEE & TEEP Engine</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Manual Entry</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Auto (PLC) + Manual</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Auto (PLC) + Manual</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">PLC Connectivity (Modbus TCP/RTU, OPC UA, MQTT Sparkplug B)</td>
+                <td class="p-4 font-mono text-center text-content-muted">— (Core = Manual only)</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Auto-telemetry</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Auto-telemetry</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Multi-Shift Comparison</td>
+                <td class="p-4 font-mono text-center text-content-muted">— (1 shift only)</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Unlimited shifts</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Unlimited shifts</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Downtime Pareto & Scrap Pareto</td>
+                <td class="p-4 font-mono text-center">Manual categorization</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Auto + Manual</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Auto + Manual</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Worker Efficiency & TEEP / Capacity</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Labor Costing & Cost Per Part</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Energy Monitoring (per part / per shift)</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-status-beta font-bold">Beta</td>
+                <td class="p-4 font-mono text-center text-status-beta font-bold">Beta</td>
+              </tr>
+
+              <!-- Downtime & Quality -->
+              <tr class="bg-primary-subtle/30">
+                <td class="p-4 font-semibold text-primary" colspan="4">DOWNTIME, QUALITY & TRACEABILITY</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Downtime Reasoning (35 codes, 8 languages, voice notes)</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ + Custom, ML, MTTR/MTBF</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ + Predictive Hooks</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Shift Handover</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Digital, Signed, PDF</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ + AI Summary, KPI Compare</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ + Escalation Tracking</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Traceability (Genealogy, Serial/Lot, Genealogy Tree)</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Compliance Reports (PDF GST, Excel, Scheduled Email)</td>
+                <td class="p-4 font-mono text-center">CSV export only</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ PDF + Excel + Scheduled</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ + Multi-plant Rollup</td>
+              </tr>
+
+              <!-- Mobile & Access -->
+              <tr class="bg-primary-subtle/30">
+                <td class="p-4 font-semibold text-primary" colspan="4">MOBILE & ACCESS</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Mobile Floor Companion</td>
+                <td class="p-4 font-mono text-center">Android / iOS / PWA (Operator)</td>
+                <td class="p-4 font-mono text-center font-bold">Operator + Supervisor</td>
+                <td class="p-4 font-mono text-center font-bold">All + Custom Workflows</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">SSO / LDAP / RBAC (Azure AD, Okta, Keycloak)</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Audit Trail & Immutable Logs</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-content-muted">—</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Tamper-Evident</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Role Granularity</td>
+                <td class="p-4 font-mono text-center">Operator / Admin</td>
+                <td class="p-4 font-mono text-center">Operator / Supervisor / Admin</td>
+                <td class="p-4 font-mono text-center">Custom RBAC + ABAC</td>
+              </tr>
+
+              <!-- Architecture -->
+              <tr class="bg-primary-subtle/30">
+                <td class="p-4 font-semibold text-primary" colspan="4">ARCHITECTURE & DEPLOYMENT</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Air-Gap & Offline LAN Execution</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">100% Offline</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">100% Offline</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">100% Offline (edge buffering)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Server / Client LAN Mode (Zero-Config Discovery)</td>
+                <td class="p-4 font-mono text-center text-content-muted">— (Standalone only)</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Included</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Database Backend</td>
+                <td class="p-4 font-mono text-center">SQLite (WAL)</td>
+                <td class="p-4 font-mono text-center">SQLite (WAL)</td>
+                <td class="p-4 font-mono text-center">SQLite / PostgreSQL</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">API Access (REST + OpenAPI)</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Docker / Container Deployment</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Backup & Restore (Scheduled, Encrypted)</td>
+                <td class="p-4 font-mono text-center">Manual</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ Automated</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ + Cross-plant Sync</td>
+              </tr>
+
+              <!-- Pricing & Support -->
+              <tr class="bg-primary-subtle/30">
+                <td class="p-4 font-semibold text-primary" colspan="4">PRICING & SUPPORT</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Annual License Price (per plant)</td>
+                <td class="p-4 font-mono text-center font-bold text-status-shipped">Free Forever</td>
+                <td class="p-4 font-mono text-center font-bold text-primary">₹59,990 / plant / yr (flat)</td>
+                <td class="p-4 font-mono text-center font-bold text-status-beta">₹99,990 / plant / yr</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Per-Seat / Per-Tablet Fees</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">Zero</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">Zero</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">Zero</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Implementation</td>
+                <td class="p-4 font-mono text-center">Self-serve (4 hrs)</td>
+                <td class="p-4 font-mono text-center">Guided Pilot (2 weeks)</td>
+                <td class="p-4 font-mono text-center">Assisted Rollout</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">Support Channel</td>
+                <td class="p-4 font-mono text-center">Community / Docs</td>
+                <td class="p-4 font-mono text-center">Email + Slack (Business Hours)</td>
+                <td class="p-4 font-mono text-center">Priority SLA + Dedicated</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-medium">AI Manifest (Machine-Readable Feature Schema)</td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ <a href="/ai-manifest.json" class="text-primary underline">View</a></td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ <a href="/ai-manifest.json" class="text-primary underline">View</a></td>
+                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ <a href="/ai-manifest.json" class="text-primary underline">View</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Download Spec Sheet -->
+        <div class="text-center mt-10 p-6 rounded-xl border border-primary/30 bg-primary-subtle/30">
+          <h3 class="text-xl font-bold mb-2">Need This as a PDF for Procurement?</h3>
+          <p class="text-sm text-content-muted mb-4 max-w-xl mx-auto">Download the full specification sheet with architectural diagrams, data flow, and compliance mappings.</p>
+          <a href="/specs.pdf" class="btn-secondary inline-flex items-center gap-2" target="_blank">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+            Download Spec Sheet (PDF)
+          </a>
+        </div>
+
+        <!-- AI Manifest Link -->
+        <div class="text-center mt-6">
+          <p class="text-xs text-content-muted">Evaluating with AI tools? <a href="/ai-manifest.json" target="_blank" class="font-mono text-primary hover:underline">ai-manifest.json</a> provides machine-readable feature schemas, limits, and pricing for automated evaluation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 40rem) {
+    .section {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+  @media (min-width: 64rem) {
+    .section {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-outline);
+    background-color: var(--color-surface-elevated);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  .card:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    border: 1px solid var(--color-outline);
+    background-color: var(--color-surface-elevated);
+    color: var(--color-content);
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    transition: background-color 0.15s ease-in-out;
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-surface-muted);
+  }
+</style>

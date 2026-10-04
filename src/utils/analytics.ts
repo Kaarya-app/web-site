@@ -1,6 +1,6 @@
 // Matomo analytics for Astro site
-const MATOMO_URL = import.meta.env.NUXT_PUBLIC_MATOMO_URL || ''
-const MATOMO_SITE_ID = import.meta.env.NUXT_PUBLIC_MATOMO_SITE_ID || ''
+const MATOMO_URL = import.meta.env.PUBLIC_MATOMO_URL || ''
+const MATOMO_SITE_ID = import.meta.env.PUBLIC_MATOMO_SITE_ID || ''
 
 export function trackPageView(path?: string) {
   if (!MATOMO_URL || !MATOMO_SITE_ID) return
