@@ -12,9 +12,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </a>
         <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-content">Technical Specifications</h1>
         <p class="text-lg text-content-muted">Complete architectural capabilities and limits for engineering evaluators and procurement.</p>
+        <span class="tech-specs-notice inline-block mt-4 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-primary/10 text-primary border border-primary/20">Technical Specifications (for Engineering Evaluators)</span>
       </div>
 
       <div class="max-w-5xl mx-auto">
+        <!-- Quick Summary: 3 Key Differentiators -->
+        <div class="quick-summary grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+          <div class="quick-summary-item card p-5 text-center">
+            <div class="quick-summary-icon text-4xl mb-2">∞</div>
+            <div class="quick-summary-value font-mono text-3xl font-bold text-primary mb-1">∞</div>
+            <div class="quick-summary-label text-sm text-content-muted">Unlimited Machines</div>
+            <div class="quick-summary-label text-xs text-content-muted mt-0.5">Per Plant (Pro+)</div>
+          </div>
+          <div class="quick-summary-item card p-5 text-center">
+            <div class="quick-summary-icon text-4xl mb-2">✓</div>
+            <div class="quick-summary-value font-mono text-3xl font-bold text-status-shipped mb-1">✓</div>
+            <div class="quick-summary-label text-sm text-content-muted">100% Offline</div>
+            <div class="quick-summary-label text-xs text-content-muted mt-0.5">Air-Gap Native</div>
+          </div>
+          <div class="quick-summary-item card p-5 text-center">
+            <div class="quick-summary-icon text-4xl mb-2">₹0</div>
+            <div class="quick-summary-value font-mono text-3xl font-bold text-status-beta mb-1">₹0</div>
+            <div class="quick-summary-label text-sm text-content-muted">Zero Per-Seat Fees</div>
+            <div class="quick-summary-label text-xs text-content-muted mt-0.5">Unlimited Tablets</div>
+          </div>
+        </div>
+
         <!-- Tier Overview Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div class="card p-6 border-l-4 border-status-shipped">
@@ -342,5 +365,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .btn-secondary:hover {
     background-color: var(--color-surface-muted);
+  }
+
+  .tech-specs-notice {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .quick-summary {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  @media (min-width: 48rem) {
+    .quick-summary {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .quick-summary-item {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .quick-summary-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  .quick-summary-icon {
+    line-height: 1;
+  }
+
+  .quick-summary-value {
+    line-height: 1.2;
+  }
+
+  .quick-summary-label {
+    font-weight: 500;
   }
 </style>

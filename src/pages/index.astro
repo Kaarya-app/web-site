@@ -22,7 +22,7 @@ const topProofs = proofs.slice(0, 2);
           </div>
 
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-content leading-tight">
-            Live OEE in 4 Hours.<br class="hidden sm:block" /><span class="text-primary">No PLC Changes. No Consultants.</span>
+            Cut Machine Downtime 20% in 4 Hours.<br class="hidden sm:block" /><span class="text-primary">No PLC Changes. No Consultants.</span>
           </h1>
 
           <p class="text-lg sm:text-xl text-content-muted leading-relaxed mb-8 max-w-2xl">
@@ -32,9 +32,7 @@ const topProofs = proofs.slice(0, 2);
           <div class="flex flex-wrap items-center gap-4 mb-8">
             <a href="/contact" class="btn-primary font-medium text-sm" data-testid="hero-cta-primary">
               Start Free Pilot
-            </a>
-            <a href="/demo" class="btn-secondary font-medium text-sm">
-              Explore Product Tour
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 7l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
           </div>
 
@@ -42,39 +40,30 @@ const topProofs = proofs.slice(0, 2);
           <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-content-muted">
             <span class="flex items-center gap-2"><svg class="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Running on 50+ machines across Pune, Bengaluru, Coimbatore, Rajkot</span>
             <span class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Air-gap native · Zero internet required</span>
-            <span class="flex items-center gap-2"><svg class="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> IATF 16949 & AS9100 compliant</span>
           </div>
         </div>
 
         <div class="lg:col-span-5 relative">
-          <!-- Terminal Widget -->
+          <!-- KPI Illustration -->
           <div class="rounded-lg border border-outline bg-surface overflow-hidden shadow-2xl relative z-10">
-            <div class="flex items-center gap-2 px-4 py-2 border-b border-outline bg-surface-elevated">
-              <div class="w-3 h-3 rounded-full bg-error"></div>
-              <div class="w-3 h-3 rounded-full bg-warning"></div>
-              <div class="w-3 h-3 rounded-full bg-secondary"></div>
-              <div class="ml-2 font-mono text-xs text-content-muted">kaarya-node-1 ~ production</div>
-            </div>
-            <div class="p-6 font-mono text-sm leading-relaxed">
-              <div class="text-content-muted mb-2">$ kaarya status --live</div>
-              <div class="mb-4">
-                <span class="text-secondary">[OK]</span> Node <span class="text-primary">CNC-01</span> online.<br/>
-                <span class="text-secondary">[OK]</span> Syncing telemetry... 14ms ping.
-              </div>
-              <div class="mb-2">CURRENT RUN: <span class="text-content font-bold">WO-9921-B</span></div>
-              <div class="grid grid-cols-2 gap-4 border border-outline p-3 rounded-sm bg-surface-elevated mb-4">
-                <div>
-                  <div class="text-xs text-content-muted mb-1">OEE</div>
-                  <div class="text-2xl text-secondary font-bold">87.4%</div>
+            <div class="p-6 space-y-4">
+              <div class="grid grid-cols-3 gap-4 text-center">
+                <div class="p-3 rounded-lg bg-surface-elevated border border-outline">
+                  <div class="text-3xl font-bold font-mono text-secondary">87%</div>
+                  <div class="text-xs text-content-muted font-sans mt-1">OEE</div>
                 </div>
-                <div>
-                  <div class="text-xs text-content-muted mb-1">CYCLE TIME</div>
-                  <div class="text-2xl text-primary font-bold">42s</div>
+                <div class="p-3 rounded-lg bg-surface-elevated border border-outline">
+                  <div class="text-3xl font-bold font-mono text-primary">42s</div>
+                  <div class="text-xs text-content-muted font-sans mt-1">Cycle Time</div>
+                </div>
+                <div class="p-3 rounded-lg bg-surface-elevated border border-outline">
+                  <div class="text-3xl font-bold font-mono text-warning">20%</div>
+                  <div class="text-xs text-content-muted font-sans mt-1">Downtime Cut</div>
                 </div>
               </div>
-              <div class="flex justify-between items-center text-xs">
-                <span class="text-content-muted">Local DB: <span class="text-content">WAL Sync</span></span>
-                <span class="text-secondary animate-pulse">● LIVE</span>
+              <div class="p-3 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                <span class="font-mono text-xs text-primary font-semibold">LIVE — Real-time data from shopfloor</span>
               </div>
             </div>
           </div>
@@ -100,42 +89,54 @@ const topProofs = proofs.slice(0, 2);
     </div>
   </section>
 
-  <!-- CORE CAPABILITIES (4 hero features) -->
+  <!-- OUTCOME PILLARS (3 core outcomes) -->
   <section id="features" class="section border-b border-outline">
     <div class="container">
       <div class="mb-12">
-        <div class="section-label">Core Capabilities</div>
-        <h2 class="text-3xl font-bold tracking-tight mb-2">What You Get Today</h2>
-        <p class="text-content-muted max-w-2xl">Battle-tested on factory shopfloors. Available in the single desktop binary and API server.</p>
+        <div class="section-label">What You Get</div>
+        <h2 class="text-3xl font-bold tracking-tight mb-2">Three Outcomes That Matter</h2>
+        <p class="text-content-muted max-w-2xl">No feature bloat. Just the three things every plant manager needs to run a better shopfloor.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {heroFeatures.map((feature) => (
-          <div class="card flex flex-col justify-between">
-            <div>
-              <span class="font-sans text-xs font-bold text-primary uppercase tracking-wider mb-2 block">{feature.data.category}</span>
-              <h3 class="text-xl font-bold mb-2">{feature.data.title}</h3>
-              <p class="text-sm text-content-muted mb-2">{feature.data.tagline}</p>
-              <p class="text-sm leading-relaxed text-content-muted">{feature.data.description}</p>
-            </div>
-            <div class="pt-4 border-t border-outline flex items-center justify-between">
-              <span class="badge-shipped">Shipped</span>
-              <span class="font-mono text-xs text-content-muted">{feature.data.tier}</span>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Pillar 1: See Everything -->
+        <div class="outcome-pillar">
+          <div class="outcome-pillar-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
           </div>
-        ))}
+          <h3 class="outcome-pillar-title">See Everything</h3>
+          <p class="outcome-pillar-desc">Live Andon board + real-time OEE on every screen. Wall TVs, tablets, phones — sub-500ms latency. Know instantly which machine is running, down, or idle.</p>
+        </div>
+
+        <!-- Pillar 2: Log Everything -->
+        <div class="outcome-pillar">
+          <div class="outcome-pillar-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="outcome-pillar-title">Log Everything</h3>
+          <p class="outcome-pillar-desc">Operators log downtime in 3 taps — in Hindi, Tamil, Telugu, Kannada, Marathi, or voice. Mandatory reason gate means no blank downtime. Pareto updates every 10 seconds.</p>
+        </div>
+
+        <!-- Pillar 3: Report Everything -->
+        <div class="outcome-pillar">
+          <div class="outcome-pillar-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="outcome-pillar-title">Report Everything</h3>
+          <p class="outcome-pillar-desc">One-click shift dossiers, GST-ready PDFs, Excel exports, scheduled emails. IATF 16949 audit packets generated automatically. No more clipboard disputes.</p>
+        </div>
       </div>
 
       <div class="text-center mt-8">
         <a href="/features" class="btn-secondary font-medium text-sm inline-flex items-center gap-2">
-          View All Capabilities
+          View All 14 Capabilities
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 7l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
+  <!-- HOW IT WORKS - 3 Steps -->
   <section id="how-it-works" class="section bg-surface-elevated border-b border-outline">
     <div class="container">
       <div class="text-center max-w-2xl mx-auto mb-12">
@@ -144,16 +145,13 @@ const topProofs = proofs.slice(0, 2);
       </div>
 
       <div class="max-w-4xl mx-auto pl-4">
-        {howItWorks.map((step) => (
-          <div class="timeline-step">
-            <div class="font-mono text-xl font-bold text-primary mb-2">{step.data.time}</div>
-            <h3 class="text-lg font-bold mb-2">{step.data.title}</h3>
-            <p class="text-sm text-content-muted">
-              {step.data.description}
-              {step.data.codeSnippet && (
-                <code class="font-mono bg-surface px-1.5 py-0.5 rounded border border-outline mt-2 block w-fit">{step.data.codeSnippet}</code>
-              )}
-            </p>
+        {howItWorks.slice(0, 3).map((step, index) => (
+          <div class="step-timeline">
+            <span class="step-timeline-marker">{index + 1}</span>
+            <div class="step-timeline-content">
+              <h3 class="step-timeline-title">{step.data.title}</h3>
+              <p class="step-timeline-desc">{step.data.description}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -167,112 +165,75 @@ const topProofs = proofs.slice(0, 2);
     </div>
   </section>
 
-  <!-- PRICING -->
+  <!-- PRICING - 2 Tiers + Contact Sales -->
   <section id="pricing" class="section">
     <div class="container">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <h2 class="text-3xl font-bold tracking-tight mb-2">Transparent Pricing. Engineered for Indian MSMEs.</h2>
-        <p class="text-content-muted">Core free forever (2 machines). Pro Starter ₹24,990/yr flat — unlimited machines. Zero per-seat fees.</p>
+        <p class="text-content-muted">Core free forever (2 machines). Pro ₹24,990/yr flat — unlimited machines. Zero per-seat fees.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
-        {[
-          { id: 'core', name: 'Core', price: 0, priceLabel: 'Free Forever', features: ['Up to 2 machines (evaluation)', 'Manual OEE entry', 'Downtime reasoning (35 codes, 8 languages, voice)', 'Shift handover (digital, signed, PDF)', 'CSV export', 'Android / iOS / PWA (Operator)', '100% offline LAN execution'], highlight: false, cta: 'Get Core Free' },
-          { id: 'pro', name: 'Pro', price: 24990, priceLabel: '₹24,990/yr', monthly: 2083, features: ['Unlimited machines & shifts', 'Auto OEE from PLC (Modbus, OPC UA, MQTT)', 'Auto + Manual downtime categorization', 'Worker efficiency & TEEP / Capacity', 'PDF + Excel + Scheduled compliance reports', 'Operator + Supervisor mobile apps', 'Guided pilot (2 weeks)'], highlight: true, cta: 'Start Pro Pilot', badge: 'Most Popular' },
-          { id: 'enterprise', name: 'Enterprise', price: 99990, priceLabel: '₹99,990/yr', monthly: 8333, features: ['Unlimited plants & machines', 'Everything in Pro', 'Multi-plant rollup reports', 'SSO / LDAP / RBAC (Azure AD, Okta, Keycloak)', 'Audit trail & immutable logs', 'Assisted rollout & custom workflows', 'Priority support SLA'], highlight: false, cta: 'Contact Sales' },
-        ].map((tier) => (
-          <div class={`card flex flex-col justify-between relative ${tier.highlight ? 'border-primary shadow-md' : ''}`}>
-            {tier.highlight && (
-              <div class="absolute -top-3 right-4 font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-primary text-white">
-                {tier.badge}
-              </div>
-            )}
-            <div>
-              <h3 class="text-2xl font-bold mb-4">{tier.name}</h3>
-              <div class="mb-4">
-                {tier.price === 0 ? (
-                  <div class="font-mono text-3xl font-bold text-status-shipped">{tier.priceLabel}</div>
-                ) : (
-                  <>
-                    <span class="font-mono text-3xl font-bold text-content">₹{tier.price.toLocaleString('en-IN')}</span>
-                    <span class="text-xs text-content-muted font-mono">/yr</span>
-                    <div class="text-xs text-content-muted font-mono mt-1">(₹{tier.monthly.toLocaleString('en-IN')}/mo equivalent)</div>
-                  </>
-                )}
-              </div>
-              <ul class="space-y-2 text-sm border-t border-outline pt-4">
-                {tier.features.map((feat) => (
-                  <li class="flex items-center gap-2">
-                    <svg class="w-4 h-4 text-secondary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                    <span class="text-content-muted">{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div class="flex flex-col gap-2 pt-4 border-t border-outline">
-              <a href={`/contact?tier=${tier.id}`} class={`${tier.highlight ? 'btn-primary' : 'btn-secondary'} w-full text-center text-sm`}>
-                {tier.cta}
-              </a>
-              {tier.id === 'pro' && (
-                <div class="font-mono text-xs text-center text-primary font-semibold">Flat plant license · Unlimited machines</div>
-              )}
-              <a href="/specs" class="font-sans text-xs text-center font-semibold text-content-muted hover:text-primary block transition-colors">
-                View Technical Specifications
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+        <!-- Core Tier -->
+        <div class="pricing-card">
+          <div>
+            <h3 class="pricing-name">Core</h3>
+            <div class="pricing-price free">Free<span class="period">/yr</span></div>
+            <p class="pricing-tagline">Free forever for up to 2 machines — perfect for evaluation</p>
+            <ul class="pricing-features">
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Up to 2 machines, 1 shift</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Manual OEE entry</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Downtime reasoning (35 codes, 8 languages, voice)</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Shift handover (digital, signed, PDF)</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> CSV export</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Android / iOS / PWA operator app</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 100% offline LAN execution</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="/contact?tier=core" class="btn-primary w-full text-sm py-2.5">
+                Get Core Free
               </a>
             </div>
           </div>
-        ))}
+        </div>
+
+        <!-- Pro Tier -->
+        <div class="pricing-card highlighted relative">
+          <div class="pricing-badge">Most Popular</div>
+          <div>
+            <h3 class="pricing-name">Pro</h3>
+            <div class="pricing-price">₹24,990<span class="period">/yr</span></div>
+            <p class="pricing-tagline">Flat plant license — unlimited machines, unlimited shifts</p>
+            <ul class="pricing-features">
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Unlimited machines & shifts</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Auto OEE from PLC (Modbus, OPC UA, MQTT)</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Auto + Manual downtime categorization</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Worker efficiency & TEEP / Capacity</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> PDF + Excel + Scheduled compliance reports</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Operator + Supervisor mobile apps</li>
+              <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Guided pilot (2 weeks)</li>
+            </ul>
+            <div class="pricing-cta">
+              <a href="/contact?tier=pro" class="btn-primary w-full text-sm py-2.5">
+                Start Pro Pilot
+              </a>
+              <div class="pricing-note">Flat plant license · Unlimited machines</div>
+              <a href="/specs" class="pricing-specs-link">View Technical Specifications</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Key Decision Matrix (5 rows only) -->
-      <div id="decision-matrix" class="max-w-4xl mx-auto pt-8 border-t border-outline">
-        <div class="text-center mb-8">
-          <h3 class="text-2xl font-bold tracking-tight mb-2">Quick Comparison</h3>
-          <p class="text-sm text-content-muted">What matters for your decision. Full specs at <a href="/specs" class="text-primary hover:underline font-mono">/specs</a>.</p>
-        </div>
-        <div class="overflow-x-auto rounded-lg border border-outline bg-surface-elevated">
-          <table class="w-full text-left text-sm border-collapse">
-            <thead>
-              <tr class="border-b border-outline bg-surface font-sans text-sm font-semibold text-content-muted">
-                <th class="p-4">Capability</th>
-                <th class="p-4 w-40 text-center">Core</th>
-                <th class="p-4 w-40 text-center text-primary">Pro</th>
-                <th class="p-4 w-40 text-center text-status-beta">Enterprise</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-outline">
-              <tr>
-                <td class="p-4 font-medium">Machines & Shifts</td>
-                <td class="p-4 font-mono text-center text-content-muted">2 machines, 1 shift</td>
-                <td class="p-4 font-mono text-center font-bold text-primary">Unlimited</td>
-                <td class="p-4 font-mono text-center font-bold text-status-beta">Unlimited (multi-plant)</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">PLC Auto-Capture (Modbus/OPC UA/MQTT)</td>
-                <td class="p-4 font-mono text-center text-content-muted">—</td>
-                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
-                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Scheduled PDF/Excel Reports (GST-ready)</td>
-                <td class="p-4 font-mono text-center text-content-muted">CSV only</td>
-                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
-                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓ + Rollup</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">SSO / RBAC / Audit Trail</td>
-                <td class="p-4 font-mono text-center text-content-muted">—</td>
-                <td class="p-4 font-mono text-center text-content-muted">—</td>
-                <td class="p-4 font-mono text-center text-status-shipped font-bold">✓</td>
-              </tr>
-              <tr>
-                <td class="p-4 font-medium">Annual Price (per plant)</td>
-                <td class="p-4 font-mono text-center font-bold text-status-shipped">Free</td>
-                <td class="p-4 font-mono text-center font-bold text-primary">₹24,990</td>
-                <td class="p-4 font-mono text-center font-bold text-status-beta">₹99,990</td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Enterprise - Contact Sales -->
+      <div class="text-center max-w-xl mx-auto">
+        <div class="card p-8 max-w-xl mx-auto">
+          <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+          <p class="text-content-muted mb-6">Multi-plant rollups, SSO/RBAC, audit trails, custom workflows, priority SLA, assisted rollout.</p>
+          <div class="pricing-price">₹99,990<span class="period">/yr</span></div>
+          <p class="text-xs text-content-muted font-mono mt-1">(per plant)</p>
+          <a href="/contact?tier=enterprise" class="btn-secondary w-full text-sm py-2.5 mt-6 inline-block">
+            Contact Sales
+          </a>
         </div>
       </div>
     </div>
@@ -284,188 +245,9 @@ const topProofs = proofs.slice(0, 2);
       <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">Ready to Cut Downtime 20%?</h2>
       <p class="text-primary-100 mb-6 max-w-xl mx-auto">Book a 30-minute technical walkthrough. We'll show you live OEE on your machine — no commitment.</p>
       <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary font-medium rounded-sm hover:bg-primary-50 transition-colors">
-        Book Walkthrough
+        Start Free Pilot
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 7l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
     </div>
   </section>
 </BaseLayout>
-
-<style is:global>
-  .section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  @media (min-width: 40rem) {
-    .section {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
-    }
-  }
-  @media (min-width: 64rem) {
-    .section {
-      padding-top: 8rem;
-      padding-bottom: 8rem;
-    }
-  }
-
-  .container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 80rem;
-  }
-
-  .section-label {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-  }
-
-  .card {
-    padding: 1.5rem;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--color-outline);
-    background-color: var(--color-surface-elevated);
-    transition: box-shadow 0.2s ease-in-out;
-  }
-  .card:hover {
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  }
-
-  .badge-shipped {
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 0.125rem 0.5rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--color-status-shipped-subtle);
-    color: var(--color-status-shipped);
-    border: 1px solid var(--color-status-shipped-border);
-  }
-
-  .badge-pro {
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 0.125rem 0.5rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--color-primary-subtle);
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary-border);
-  }
-
-  .badge-core {
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    padding: 0.125rem 0.5rem;
-    border-radius: var(--radius-sm);
-    background-color: var(--color-surface-muted);
-    color: var(--color-content-muted);
-    border: 1px solid var(--color-outline);
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.625rem 1.25rem;
-    background-color: var(--color-primary);
-    color: #ffffff;
-    font-weight: 500;
-    border-radius: var(--radius-sm);
-    transition: background-color 0.15s ease-in-out;
-  }
-  .btn-primary:hover {
-    background-color: var(--color-primary-hover);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.625rem 1.25rem;
-    border: 1px solid var(--color-outline);
-    background-color: var(--color-surface-elevated);
-    color: var(--color-content);
-    font-weight: 500;
-    border-radius: var(--radius-sm);
-    transition: background-color 0.15s ease-in-out;
-  }
-  .btn-secondary:hover {
-    background-color: var(--color-surface-muted);
-  }
-
-  .timeline-step {
-    position: relative;
-    padding-left: 2rem;
-    padding-bottom: 2.5rem;
-    border-left: 2px solid var(--color-outline);
-  }
-  .timeline-step:last-child {
-    border-left: none;
-    padding-bottom: 0;
-  }
-  .timeline-step::before {
-    content: '';
-    position: absolute;
-    left: -0.3125rem;
-    top: 0;
-    width: 0.625rem;
-    height: 0.625rem;
-    border-radius: 50%;
-    background-color: var(--color-primary);
-    border: 2px solid var(--color-surface);
-  }
-
-  .metric-strip {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 4rem;
-    padding-top: 4rem;
-    border-top: 1px solid var(--color-outline);
-  }
-  @media (min-width: 48rem) {
-    .metric-strip {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-  }
-
-  .metric-strip-item {
-    text-align: center;
-  }
-
-  .use-case-row {
-    padding: 1rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-outline);
-    background-color: var(--color-surface-elevated);
-  }
-
-  .upcoming-card {
-    background-color: var(--color-surface-elevated);
-    border: 1px solid var(--color-outline);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-card);
-    padding: 1.5rem;
-    transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
-  }
-  .upcoming-card:hover {
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    border-color: var(--color-primary-border);
-  }
-</style>

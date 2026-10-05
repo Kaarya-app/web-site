@@ -43,86 +43,52 @@ const seoDescription = "Connect directly with Kaarya engineers for product inqui
             </p>
 
             <form id="inquiry-form" class="space-y-4">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="name" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-                    Your Name <span class="text-primary">*</span>
-                  </label>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="name" class="form-label">Your Name <span class="text-primary">*</span></label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     required
                     placeholder="e.g. Ramesh Patil"
-                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                    class="form-input"
                   />
                 </div>
-                <div>
-                  <label for="email" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-                    Work Email <span class="text-primary">*</span>
-                  </label>
+                <div class="form-field">
+                  <label for="email" class="form-label">Work Email <span class="text-primary">*</span></label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     required
                     placeholder="ramesh@autocomponents.in"
-                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                    class="form-input"
                   />
                 </div>
               </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="phone" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-                    WhatsApp / Phone <span class="text-primary">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    placeholder="+91 98765 43210"
-                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-mono transition-colors"
-                  />
-                </div>
-                <div>
-                  <label for="company" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-                    Company / Plant Name <span class="text-primary">*</span>
-                  </label>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="company" class="form-label">Company / Plant Name <span class="text-primary">*</span></label>
                   <input
                     type="text"
                     id="company"
                     name="company"
                     required
                     placeholder="e.g. Precision Tech Ltd"
-                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                    class="form-input"
                   />
                 </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label for="city" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-                    Location / Industrial Area
-                  </label>
-                  <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    placeholder="e.g. Bhosari, Pune / Peenya, BLR"
-                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
-                  />
-                </div>
-                <div>
-                  <label for="scale" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-                    Number of CNCs / Machines
-                  </label>
+                <div class="form-field">
+                  <label for="scale" class="form-label">Machine Scale <span class="text-primary">*</span></label>
                   <select
                     id="scale"
                     name="scale"
-                    class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                    required
+                    class="form-select"
                   >
+                    <option value="">Select machine scale</option>
                     <option value="1-2 Machines (Core Tier Evaluation)">1-2 Machines (Core Tier)</option>
                     <option value="3-5 CNCs (Pro Starter)" selected>3-5 CNCs (Pro Starter)</option>
                     <option value="6-15 Machines (Pro Standard)">6-15 Machines (Pro Standard)</option>
@@ -132,50 +98,25 @@ const seoDescription = "Connect directly with Kaarya engineers for product inqui
                 </div>
               </div>
 
-              <div>
-                <label for="inquiry_type" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-                  Inquiry Purpose
-                </label>
-                <select
-                  id="inquiry_type"
-                  name="inquiry_type"
-                  class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
-                >
-                  <option value="Product Walkthrough & Technical Demo" selected>Schedule 30-min Technical Demo</option>
-                  <option value="Pilot Access & Shopfloor Evaluation">Request Pilot Onboarding Access</option>
-                  <option value="Pricing, Quote & Tally Alignment">Commercials, Quotation & Purchase Order</option>
-                  <option value="CNC & PLC IoT Compatibility (Beta)">CNC / PLC Hardware Compatibility Query (Beta)</option>
-                  <option value="General Question">General Factory Question</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="message" class="block font-sans text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-                  Your Current Challenge or Questions
-                </label>
+              <div class="form-field">
+                <label for="message" class="form-label">Current Challenge or Questions <span class="text-primary">*</span></label>
                 <textarea
                   id="message"
                   name="message"
-                  rows="3"
+                  rows="4"
+                  required
                   placeholder="e.g. Currently tracking downtime on paper logs. Need automated shift reports for IATF audit. Want to see live demo of OEE calculations."
-                  class="w-full px-3 py-2 rounded bg-surface border border-outline text-content text-sm focus:outline-none focus:border-primary font-sans transition-colors"
+                  class="form-textarea"
                 ></textarea>
               </div>
 
-              <div class="pt-2 flex flex-col sm:flex-row gap-3">
+              <div class="pt-2">
                 <button
                   type="submit"
-                  class="btn-primary py-2.5 px-6 font-semibold text-sm flex-1 flex items-center justify-center gap-2 cursor-pointer"
+                  class="btn-primary py-2.5 px-6 font-semibold text-sm w-full sm:w-auto flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>Submit Inquiry via Email</span>
+                  <span>Submit Inquiry</span>
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </button>
-                <button
-                  type="button"
-                  id="copy-inquiry-btn"
-                  class="btn-secondary py-2.5 px-4 font-mono text-xs flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <span id="copy-text">Copy Inquiry Text</span>
                 </button>
               </div>
             </form>
@@ -261,42 +202,33 @@ const seoDescription = "Connect directly with Kaarya engineers for product inqui
   </section>
 
   <script>
-    // Autofill purpose from URL parameter if present (e.g. ?tier=pro)
+    // Autofill Machine Scale from URL parameter if present (e.g. ?tier=pro)
     const urlParams = new URLSearchParams(window.location.search);
     const tier = urlParams.get('tier');
     const scaleSelect = document.getElementById('scale') as HTMLSelectElement | null;
-    const inquirySelect = document.getElementById('inquiry_type') as HTMLSelectElement | null;
     
-    if (tier && inquirySelect && scaleSelect) {
+    if (tier && scaleSelect) {
       if (tier === 'core') {
         scaleSelect.value = '1-2 Machines (Core Tier Evaluation)';
-        inquirySelect.value = 'Pilot Access & Shopfloor Evaluation';
       } else if (tier === 'pro') {
         scaleSelect.value = '3-5 CNCs (Pro Starter)';
-        inquirySelect.value = 'Pricing, Quote & Tally Alignment';
       } else if (tier === 'cloud') {
         scaleSelect.value = '30+ Machines / Multi-Plant (Enterprise)';
-        inquirySelect.value = 'Pilot Access & Shopfloor Evaluation';
       }
     }
 
     const form = document.getElementById('inquiry-form') as HTMLFormElement | null;
     const copyEmailBtn = document.getElementById('copy-email-btn');
-    const copyInquiryBtn = document.getElementById('copy-inquiry-btn');
     const statusFeedback = document.getElementById('status-feedback');
-    const copyText = document.getElementById('copy-text');
 
     function buildInquiryPayload(): { subject: string; body: string } {
       const name = (document.getElementById('name') as HTMLInputElement)?.value || '';
       const email = (document.getElementById('email') as HTMLInputElement)?.value || '';
-      const phone = (document.getElementById('phone') as HTMLInputElement)?.value || '';
       const company = (document.getElementById('company') as HTMLInputElement)?.value || '';
-      const city = (document.getElementById('city') as HTMLInputElement)?.value || '';
       const scale = (document.getElementById('scale') as HTMLSelectElement)?.value || '';
-      const inquiryType = (document.getElementById('inquiry_type') as HTMLSelectElement)?.value || '';
       const message = (document.getElementById('message') as HTMLTextAreaElement)?.value || '';
 
-      const subject = `Kaarya Inquiry: ${inquiryType} - ${company || name}`;
+      const subject = `Kaarya Inquiry: ${scale} - ${company || name}`;
       const body = `Hello Kaarya Engineering Team,
 
 I would like to submit a product inquiry for Kaarya Digital Shopfloor Ledger.
@@ -304,11 +236,8 @@ I would like to submit a product inquiry for Kaarya Digital Shopfloor Ledger.
 --- INQUIRY DETAILS ---
 Name: ${name}
 Work Email: ${email}
-Phone / WhatsApp: ${phone}
 Company / Plant: ${company}
-Location: ${city || 'Not specified'}
 Machine Scale: ${scale}
-Inquiry Type: ${inquiryType}
 
 Notes / Current Situation:
 ${message || 'Please arrange a technical walkthrough / pilot onboarding details.'}
@@ -332,23 +261,8 @@ Sent via website inquiry (kaayra.interstellarhq.in)
           statusFeedback.classList.remove('hidden');
           statusFeedback.innerHTML = `
             <div class="text-secondary font-bold mb-1">✓ Mail client opened!</div>
-            <div>If your email client did not launch, please send your inquiry directly to <strong class="text-primary">contact-us@kaarya.interstellarhq.in</strong> or use the "Copy Inquiry Text" button.</div>
+            <div>If your email client did not launch, please send your inquiry directly to <strong class="text-primary">contact-us@kaarya.interstellarhq.in</strong>.</div>
           `;
-        }
-      });
-    }
-
-    if (copyInquiryBtn) {
-      copyInquiryBtn.addEventListener('click', async () => {
-        const { body } = buildInquiryPayload();
-        try {
-          await navigator.clipboard.writeText(body);
-          if (copyText) copyText.textContent = 'Copied to Clipboard!';
-          setTimeout(() => {
-            if (copyText) copyText.textContent = 'Copy Inquiry Text';
-          }, 3000);
-        } catch {
-          alert('Could not copy automatically. Please email contact-us@kaarya.interstellarhq.in directly.');
         }
       });
     }

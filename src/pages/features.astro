@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const features = await getCollection('features');
+
+const categories = [
+  { id: 'all', label: 'All' },
+  { id: 'connectivity', label: 'Connectivity' },
+  { id: 'analytics', label: 'Analytics' },
+  { id: 'operations', label: 'Operations' },
+  { id: 'quality', label: 'Quality' },
+  { id: 'compliance', label: 'Compliance' },
+  { id: 'platform', label: 'Platform' },
+] as const;
+
+const statuses = [
+  { id: 'all', label: 'All Status' },
+  { id: 'shipped', label: 'Shipped' },
+  { id: 'beta', label: 'Beta' },
+  { id: 'alpha', label: 'Alpha' },
+  { id: 'planned', label: 'Planned' },
+] as const;
+
+const categoryLabels: Record<string, string> = {
+  connectivity: 'Connectivity',
+  analytics: 'Analytics',
+  operations: 'Operations',
+  quality: 'Quality',
+  compliance: 'Compliance',
+  platform: 'Platform',
+};
+
+const statusLabels: Record<string, string> = {
+  shipped: 'Shipped',
+  beta: 'Beta',
+  alpha: 'Alpha',
+  planned: 'Planned',
+};
+
+const tierLabels: Record<string, string> = {
+  core: 'Core',
+  pro: 'Pro',
+  cloud: 'Cloud',
+};
+
+const tierBadgeClass: Record<string, string> = {
+  core: 'badge-core',
+  pro: 'badge-pro',
+  cloud: 'badge-pro',
+};
+
+const statusBadgeClass: Record<string, string> = {
+  shipped: 'badge-shipped',
+  beta: 'badge-beta',
+  alpha: 'badge-alpha',
+  planned: 'badge-alpha',
+};
+
+function getStatusBadgeClass(status: string) {
+  return statusBadgeClass[status] || 'badge-alpha';
+}
+
+function getTierBadgeClass(tier: string) {
+  return tierBadgeClass[tier] || 'badge-core';
+}
+---
+
+<BaseLayout
+  title="Features & Capabilities — Kaarya (कार्य)"
+  description="All 14 Kaarya capabilities: real-time OEE, Andon, downtime reasoning, shift handover, IoT gateway, AI anomaly detection, traceability, energy monitoring, compliance exports, mobile companion, multi-plant sync, SQLite edge engine, and interactive product tour."
+  ogImage="/images/og-features.png"
+  keywords={[
+    'OEE Software Features',
+    'Manufacturing MES Capabilities',
+    'Real-time Andon Dashboard',
+    'Downtime Tracking Software',
+    'Shift Handover System',
+    'CNC IoT Gateway',
+    'AI Anomaly Detection Manufacturing',
+    'Traceability Software IATF 16949',
+    'Energy Monitoring Manufacturing',
+    'Compliance Reports Manufacturing',
+    'Mobile MES App',
+    'Multi-Plant MES',
+    'Embedded SQLite Edge',
+    'Product Tour Manufacturing',
+  ]}
+>
+  <section class="section">
+    <div class="container">
+      <p class="section-label">Deep Dive</p>
+      <h1 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-content mb-4">
+        All 14 Capabilities
+      </h1>
+      <p class="text-lg text-content-muted max-w-3xl mb-10">
+        Kaarya delivers a complete Digital Shopfloor Ledger — from machine connectivity to auditor-ready compliance. Every capability runs air-gapped, offline-first, and multilingual. Filter by category or delivery status below.
+      </p>
+
+      <div class="flex flex-wrap gap-2 mb-8" role="tablist" aria-label="Feature categories">
+        {categories.map((cat) => (
+          <button
+            class={`filter-tab px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+              cat.id === 'all'
+                ? 'bg-primary text-white'
+                : 'bg-surface-elevated text-content-muted hover:bg-primary/10 hover:text-primary border border-outline'
+            }`}
+            data-category={cat.id}
+            role="tab"
+            aria-selected={cat.id === 'all'}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-10" role="tablist" aria-label="Feature statuses">
+        {statuses.map((status) => (
+          <button
+            class={`filter-tab-status px-3 py-1.5 rounded-full text-sm font-medium transition-all ${
+              status.id === 'all'
+                ? 'bg-primary text-white'
+                : 'bg-surface-elevated text-content-muted hover:bg-primary/10 hover:text-primary border border-outline'
+            }`}
+            data-status={status.id}
+            role="tab"
+            aria-selected={status.id === 'all'}
+          >
+            {status.label}
+          </button>
+        ))}
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        id="features-grid"
+        role="list"
+      >
+        {features.map((feature) => {
+          const data = feature.data as any;
+          return (
+            <article
+              class="feature-card"
+              data-category={data.category}
+              data-status={data.status}
+              data-tier={data.tier}
+              role="listitem"
+            >
+              <span class="feature-category">{categoryLabels[data.category] || data.category}</span>
+              <h3 class="feature-title">{data.title}</h3>
+              <p class="feature-tagline">{data.tagline}</p>
+              <p class="feature-desc">{data.description}</p>
+              <div class="feature-meta">
+                <span class={`feature-status ${getStatusBadgeClass(data.status)}`}>
+                  {statusLabels[data.status] || data.status}
+                </span>
+                <span class={`feature-tier ${getTierBadgeClass(data.tier)}`}>
+                  {tierLabels[data.tier] || data.tier}
+                </span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <p id="no-results" class="hidden text-center text-content-muted py-12 col-span-full">
+        No features match the current filters.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    (() => {
+      const grid = document.getElementById('features-grid');
+      const noResults = document.getElementById('no-results');
+      const categoryTabs = document.querySelectorAll('[data-category]');
+      const statusTabs = document.querySelectorAll('[data-status]');
+      const cards = grid.querySelectorAll('.feature-card');
+
+      let activeCategory = 'all';
+      let activeStatus = 'all';
+
+      function filter() {
+        let visibleCount = 0;
+        cards.forEach((card) => {
+          const cat = card.dataset.category;
+          const status = card.dataset.status;
+          const catMatch = activeCategory === 'all' || cat === activeCategory;
+          const statusMatch = activeStatus === 'all' || status === activeStatus;
+          const show = catMatch && statusMatch;
+          (card as HTMLElement).style.display = show ? 'flex' : 'none';
+          if (show) visibleCount++;
+        });
+        noResults.classList.toggle('hidden', visibleCount > 0);
+      }
+
+      function setActiveTab(tabs: NodeListOf<Element>, value: string) {
+        tabs.forEach((tab) => {
+          const isActive = tab.getAttribute('data-category') === value || tab.getAttribute('data-status') === value;
+          if (isActive) {
+            tab.classList.remove('bg-surface-elevated', 'text-content-muted', 'hover:bg-primary/10', 'hover:text-primary', 'border', 'border-outline');
+            tab.classList.add('bg-primary', 'text-white');
+            tab.setAttribute('aria-selected', 'true');
+          } else {
+            tab.classList.remove('bg-primary', 'text-white');
+            tab.classList.add('bg-surface-elevated', 'text-content-muted', 'hover:bg-primary/10', 'hover:text-primary', 'border', 'border-outline');
+            tab.setAttribute('aria-selected', 'false');
+          }
+        });
+      }
+
+      categoryTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          activeCategory = tab.getAttribute('data-category') || 'all';
+          setActiveTab(categoryTabs, activeCategory);
+          filter();
+        });
+      });
+
+      statusTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          activeStatus = tab.getAttribute('data-status') || 'all';
+          setActiveTab(statusTabs, activeStatus);
+          filter();
+        });
+      });
+    })();
+  </script>
+</BaseLayout>

@@ -1,0 +1,52 @@
+---
+id: "worker-efficiency-payroll"
+title: "Worker Efficiency & Attendance Payroll Ledger"
+tagline: "Transparent, performance-driven shopfloor attendance, cycle efficiency heatmap, and wage ledger"
+category: "operations"
+status: "shipped"
+version: "1.0.0"
+tier: "pro"
+specs:
+  matrix_views: ["Daily Attendance & Efficiency Heatmap", "Part / SKU Performance Matrix"]
+  efficiency_thresholds: ["World-Class (>=85%)", "Standard (65-85%)", "Critical (<65%)"]
+  attendance_modes: ["Auto-Shift Deduction", "Manual Supervisor Override with Audit Notes"]
+  export_formats: ["UTF-8 BOM CSV / Excel", "Structured JSON"]
+  wage_engine: "Base Hours x Hourly Labor Rate + Performance Incentive Bonus"
+included_in: ["pro", "enterprise"]
+pro_gated: ["worker_efficiency", "payroll_incentive_engine", "sku_efficiency_matrix", "attendance_overrides"]
+icon: "users"
+hero_image: "/images/features/worker-efficiency-hero.png"
+screenshots:
+  - "/images/features/worker-efficiency-heatmap.png"
+  - "/images/features/worker-part-matrix.png"
+description: "Eliminate manual punch cards and payroll guesswork. Tracks day-by-day operator attendance, cycle times versus engineered standard cycle times, and automated performance incentive wage calculation. Export board-ready payroll reports with UTF-8 BOM encoding for Excel."
+keywords: ["Worker Efficiency", "Attendance Heatmap", "Shopfloor Payroll", "Operator Performance", "Standard Cycle Time", "Piece Rate Incentive", "MOM Ledger"]
+related_features: ["oee-engine", "shift-handover", "compliance-reports", "andon-dashboard"]
+---
+
+## Performance-Driven Shopfloor Payroll
+
+In precision manufacturing, operator compensation and shopfloor profitability rely directly on attendance and cycle time efficiency. When operators lack visibility into their performance targets, efficiency drops and payroll disputes rise.
+
+Kaarya Pro introduces the **Worker Efficiency & Attendance Payroll Ledger** — a digital shopfloor matrix marrying automated shift attendance tracking with engineered cycle-time efficiency scoring.
+
+### Dual-View Matrix Architecture
+
+| View Mode | Focus | Captured Metrics |
+|---|---|---|
+| **Daily Attendance & Efficiency Heatmap** | Operator $\times$ Date | Day-by-day status (`P`, `A`, `HD`, `L`), efficiency %, actual vs standard cycle time, base wage, incentive bonus, total gross pay |
+| **Part / SKU Performance Matrix** | Operator $\times$ Part | Product output, scrap count, SKU-specific cycle time benchmarks, operator skill mapping |
+
+### Dynamic Efficiency Color Thresholds
+
+The Foundry Industrial heatmap highlights operator productivity using industrial performance bands:
+- 🟢 **World-Class ($\ge 85\%$):** Meets or exceeds engineered standard cycle times; qualifies for performance incentive bonus.
+- 🟡 **Standard ($65\%\text{--}85\%$):** Normal operating pace without cycle speed loss.
+- 🔴 **Critical ($<65\%$):** Excessive cycle time deviations, setup delays, or micro-stoppages requiring supervisor investigation.
+- ⚪ **Absent / Rest:** Clean neutral indicator for off days or unlogged shifts.
+
+### Automatic Attendance with Supervisor Audit Overrides
+
+1. **Automatic Shift Extraction:** Every production log submitted from floor terminals automatically registers worker attendance and calculates active production hours.
+2. **Manual Overrides:** Supervisors can mark approved leaves, half-days, or authorized shift swaps directly from the heatmap cell drilldown with audit timestamps and reason notes.
+3. **One-Click Payroll CSV Export:** Formatted with UTF-8 BOM for instant opening in Microsoft Excel and ERP accounting systems.
