@@ -120,20 +120,22 @@ const jsonLd = {
   </head>
   <body class="min-h-screen flex flex-col bg-surface text-content">
     <header class="border-b border-outline bg-surface-elevated sticky top-0 z-40">
-      <div class="container flex items-center justify-between h-16 px-4">
-        <a href="/" class="flex items-center gap-2 font-display text-xl font-bold tracking-tight text-content no-underline">
+      <div class="container flex items-center justify-between h-16 px-3 sm:px-4">
+        <a href="/" class="flex items-center gap-1.5 sm:gap-2 font-display text-lg sm:text-xl font-bold tracking-tight text-content no-underline shrink-0">
           <span class="px-2 h-7 rounded bg-primary text-white flex items-center justify-center text-sm font-bold">कार्य</span>
           <span>KAARYA</span>
         </a>
-        <nav class="flex items-center gap-4 sm:gap-6 text-sm font-medium">
+        <nav class="flex items-center gap-2.5 sm:gap-6 text-xs sm:text-sm font-medium">
           <a href="/#features" class="text-content-muted hover:text-content no-underline transition-colors">Features</a>
-          <a href="/demo" class="text-content-muted hover:text-content no-underline transition-colors flex items-center gap-1.5">
+          <a href="/demo" class="text-content-muted hover:text-content no-underline transition-colors flex items-center gap-1">
             <span>Demo</span>
-            <span class="px-1.5 py-0.5 rounded text-[10px] font-mono bg-primary/20 text-primary uppercase font-bold">Tour</span>
+            <span class="hidden sm:inline px-1.5 py-0.5 rounded text-[10px] font-mono bg-primary/20 text-primary uppercase font-bold">Tour</span>
           </a>
           <a href="/#upcoming" class="text-content-muted hover:text-content no-underline transition-colors hidden sm:inline">Roadmap</a>
-          <a href="/#pricing" class="text-content-muted hover:text-content no-underline transition-colors">Pricing</a>
-          <a href="/contact" class="btn-primary text-xs px-3.5 py-1.5 ml-1 sm:ml-2">Inquire & Book Demo</a>
+          <a href="/#pricing" class="text-content-muted hover:text-content no-underline transition-colors hidden sm:inline">Pricing</a>
+          <a href="/contact" class="btn-primary text-xs px-2.5 py-1.5 sm:px-3.5 sm:py-1.5 whitespace-nowrap shrink-0">
+            <span class="hidden sm:inline">Inquire & </span>Book Demo
+          </a>
         </nav>
       </div>
     </header>
