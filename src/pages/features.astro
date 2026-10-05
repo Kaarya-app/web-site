@@ -175,7 +175,7 @@ function getTierBadgeClass(tier: string) {
       const noResults = document.getElementById('no-results');
       const categoryTabs = document.querySelectorAll('[data-category]');
       const statusTabs = document.querySelectorAll('[data-status]');
-      const cards = grid.querySelectorAll('.feature-card');
+      const cards = grid ? grid.querySelectorAll<HTMLElement>('.feature-card') : [];
 
       let activeCategory = 'all';
       let activeStatus = 'all';
@@ -188,10 +188,10 @@ function getTierBadgeClass(tier: string) {
           const catMatch = activeCategory === 'all' || cat === activeCategory;
           const statusMatch = activeStatus === 'all' || status === activeStatus;
           const show = catMatch && statusMatch;
-          (card as HTMLElement).style.display = show ? 'flex' : 'none';
+          card.style.display = show ? 'flex' : 'none';
           if (show) visibleCount++;
         });
-        noResults.classList.toggle('hidden', visibleCount > 0);
+        noResults?.classList.toggle('hidden', visibleCount > 0);
       }
 
       function setActiveTab(tabs: NodeListOf<Element>, value: string) {

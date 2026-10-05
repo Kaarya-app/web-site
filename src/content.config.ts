@@ -12,7 +12,7 @@ const features = defineCollection({
     version: z.string(),
     adr: z.string().optional(),
     tier: z.enum(['core', 'pro', 'enterprise', 'cloud']),
-    specs: z.record(z.any()),
+    specs: z.record(z.string(), z.any()),
     included_in: z.array(z.string()),
     pro_gated: z.array(z.string()).optional().default([]),
     icon: z.string().optional(),
@@ -35,7 +35,7 @@ const pricing = defineCollection({
     price_label: z.string().optional(),
     description: z.string().optional(),
     features: z.array(z.string()),
-    limits: z.record(z.any()),
+    limits: z.record(z.string(), z.any()),
     highlight: z.boolean().optional().default(false),
     order: z.number().optional().default(99),
   }),
@@ -47,7 +47,7 @@ const specs = defineCollection({
     id: z.string(),
     title: z.string(),
     category: z.string(),
-    items: z.record(z.any()),
+    items: z.record(z.string(), z.any()),
   }),
 });
 
